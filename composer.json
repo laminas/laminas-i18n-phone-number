@@ -1,41 +1,52 @@
 {
-    "name": "laminas/laminas-{component}",
-    "description": "",
+    "name": "laminas/laminas-i18n-phone-number",
+    "description": "Validate and format internation phone numbers",
     "license": "BSD-3-Clause",
     "keywords": [
         "laminas"
     ],
     "support": {
-        "docs": "https://docs.laminas.dev/laminas-{component}/",
-        "issues": "https://github.com/laminas/laminas-{component}/issues",
-        "source": "https://github.com/laminas/laminas-{component}",
-        "rss": "https://github.com/laminas/laminas-{component}/releases.atom",
+        "docs": "https://docs.laminas.dev/laminas-i18n-phone-number/",
+        "issues": "https://github.com/laminas/laminas-i18n-phone-number/issues",
+        "source": "https://github.com/laminas/laminas-i18n-phone-number",
+        "rss": "https://github.com/laminas/laminas-i18n-phone-number/releases.atom",
         "forum": "https://discourse.laminas.dev/"
     },
     "require": {
-        "php": "^7.3 || ~8.0.0"
+        "php": "^7.4 || ~8.0.0 || ~8.1.0",
+        "giggsey/libphonenumber-for-php": "^8.12",
+        "laminas/laminas-filter": "^2.13",
+        "laminas/laminas-validator": "^2.16"
     },
     "require-dev": {
         "laminas/laminas-coding-standard": "~2.1.4",
-        "phpunit/phpunit": "^9.3"
+        "phpunit/phpunit": "^9.5",
+        "psalm/plugin-phpunit": "^0.16.1",
+        "vimeo/psalm": "^4.21"
     },
     "autoload": {
         "psr-4": {
-            "Laminas\\{component-namespace}\\": "src//"
+            "Laminas\\I18n\\PhoneNumber\\": "src//"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "LaminasTest\\{component-namespace}\\": "test/"
+            "LaminasTest\\I18n\\PhoneNumber\\": "test/"
         }
     },
     "extra": {
         "laminas": {
-            "module": "Laminas\\{component-namespace}"
+            "module": "Laminas\\I18n\\PhoneNumber"
         }
     },
     "config": {
-        "sort-packages": true
+        "sort-packages": true,
+        "platform": {
+            "php": "7.4.99"
+        },
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
     },
     "scripts": {
         "cs-check": "phpcs",

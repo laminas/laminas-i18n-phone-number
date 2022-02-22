@@ -1,3 +1,3 @@
-# laminas-{component}
+# laminas-i18n-phone-number
 
 This component provides ...
