@@ -1,6 +1,6 @@
-# laminas-{component}
+# laminas-i18n-phone-number
 
-[![Build Status](https://github.com/laminas/laminas-{component}/workflows/Continuous%20Integration/badge.svg)](https://github.com/laminas/laminas-{component}/actions?query=workflow%3A"Continuous+Integration")
+[![Build Status](https://github.com/laminas/laminas-i18n-phone-number/workflows/Continuous%20Integration/badge.svg)](https://github.com/laminas/laminas-i18n-phone-number/actions?query=workflow%3A"Continuous+Integration")
 
 This library provides …
 
@@ -9,14 +9,14 @@ This library provides …
 Run the following to install this library:
 
 ```bash
-$ composer require laminas/laminas-{component}
+$ composer require laminas/laminas-i18n-phone-number
 ```
 
 ## Documentation
 
-Browse the documentation online at https://docs.laminas.dev/laminas-{component}/
+Browse the documentation online at https://docs.laminas.dev/laminas-i18n-phone-number/
 
 ## Support
 
-- [Issues](https://github.com/laminas/laminas-{component}/issues/)
+- [Issues](https://github.com/laminas/laminas-i18n-phone-number/issues/)
 - [Forum](https://discourse.laminas.dev/)
