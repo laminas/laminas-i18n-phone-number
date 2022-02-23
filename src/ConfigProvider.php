@@ -26,6 +26,7 @@ final class ConfigProvider
             ],
             'filters'                   => $this->filterConfiguration(),
             'validators'                => $this->validatorConfiguration(),
+            'view_helpers'              => $this->viewHelperConfiguration(),
         ];
     }
 
@@ -59,6 +60,21 @@ final class ConfigProvider
             ],
             'aliases'   => [
                 'phoneNumber' => Validator\PhoneNumber::class,
+            ],
+        ];
+    }
+
+    /**
+     * @return ServiceManagerConfigurationType
+     */
+    private function viewHelperConfiguration(): array
+    {
+        return [
+            'factories' => [
+                View\Helper\PhoneNumberFormat::class => View\Helper\Factory\PhoneNumberFormatFactory::class,
+            ],
+            'aliases'   => [
+                'phoneNumberFormat' => View\Helper\PhoneNumberFormat::class,
             ],
         ];
     }
