@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace LaminasTest\I18n\PhoneNumber\Validator;
 
+use ArrayObject;
 use Laminas\I18n\PhoneNumber\Exception\InvalidOptionException;
 use Laminas\I18n\PhoneNumber\PhoneNumberValue;
 use Laminas\I18n\PhoneNumber\Validator\PhoneNumber;
@@ -162,5 +163,12 @@ class PhoneNumberTest extends TestCase
 
         self::assertFalse($validator->isValid('911'));
         self::assertFailureMessage($validator, PhoneNumber::NOT_ALLOWED);
+    }
+
+    public function testThatOptionsCanBeTraversable(): void
+    {
+        $options   = new ArrayObject(['country' => 'US', 'allowed_types' => PhoneNumberValue::TYPE_EMERGENCY]);
+        $validator = new PhoneNumber($options);
+        self::assertTrue($validator->isValid('911'));
     }
 }
