@@ -57,6 +57,9 @@ final class ConfigProvider
             'factories' => [
                 Validator\PhoneNumber::class => Validator\Factory\PhoneNumberFactory::class,
             ],
+            'aliases'   => [
+                'phoneNumber' => Validator\PhoneNumber::class,
+            ],
         ];
     }
 }
