@@ -177,6 +177,11 @@ final class PhoneNumberValue
         return PhoneNumberUtil::getInstance()->format($this->number, PhoneNumberFormat::RFC3966);
     }
 
+    public function toNumberDialedFrom(string $country): string
+    {
+        return PhoneNumberUtil::getInstance()->formatOutOfCountryCallingNumber($this->number, $country);
+    }
+
     public function type(): int
     {
         $type = PhoneNumberUtil::getInstance()->getNumberType($this->number);
