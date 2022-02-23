@@ -134,6 +134,19 @@ class PhoneNumberValueTest extends TestCase
      * @param non-empty-string $number
      * @param non-empty-string $region
      */
+    public function testThatAnyTypeOfValidPhoneNumberCanBeFormattedToRFC3966(
+        string $number,
+        string $region
+    ): void {
+        $object = PhoneNumberValue::fromString($number, $region);
+        self::assertNotEmpty($object->toRfc3966());
+    }
+
+    /**
+     * @dataProvider validPhoneNumberProvider
+     * @param non-empty-string $number
+     * @param non-empty-string $region
+     */
     public function testThatAllValidNumbersWillHaveARegionCode(
         string $number,
         string $region
@@ -198,5 +211,15 @@ class PhoneNumberValueTest extends TestCase
     {
         $this->expectException(ExceptionInterface::class);
         PhoneNumberValue::fromString($number, $country);
+    }
+
+    public function testExpectedFormatVariations(): void
+    {
+        $number = PhoneNumberValue::fromString('+447843567890');
+
+        self::assertEquals('07843 567890', $number->toNational());
+        self::assertEquals('+447843567890', $number->toE164());
+        self::assertEquals('tel:+44-7843-567890', $number->toRfc3966());
+        self::assertEquals('+44 7843 567890', $number->toInternational());
     }
 }

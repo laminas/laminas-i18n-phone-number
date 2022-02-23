@@ -168,6 +168,11 @@ final class PhoneNumberValue
         return PhoneNumberUtil::getInstance()->format($this->number, PhoneNumberFormat::INTERNATIONAL);
     }
 
+    public function toRfc3966(): string
+    {
+        return PhoneNumberUtil::getInstance()->format($this->number, PhoneNumberFormat::RFC3966);
+    }
+
     public function type(): int
     {
         $type = PhoneNumberUtil::getInstance()->getNumberType($this->number);
