@@ -3,14 +3,34 @@
     "description": "Validate and format internation phone numbers",
     "license": "BSD-3-Clause",
     "keywords": [
-        "laminas"
+        "laminas",
+        "i18n",
+        "libphonenumber",
+        "validation",
+        "phonenumber"
     ],
+    "homepage": "https://laminas.dev",
     "support": {
         "docs": "https://docs.laminas.dev/laminas-i18n-phone-number/",
         "issues": "https://github.com/laminas/laminas-i18n-phone-number/issues",
         "source": "https://github.com/laminas/laminas-i18n-phone-number",
         "rss": "https://github.com/laminas/laminas-i18n-phone-number/releases.atom",
         "forum": "https://discourse.laminas.dev/"
+    },
+    "config": {
+        "sort-packages": true,
+        "platform": {
+            "php": "7.4.99"
+        },
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "composer/package-versions-deprecated": true
+        }
+    },
+    "extra": {
+        "laminas": {
+            "config-provider": "Laminas\\I18n\\PhoneNumber\\ConfigProvider"
+        }
     },
     "require": {
         "php": "^7.4 || ~8.0.0 || ~8.1.0",
@@ -37,24 +57,15 @@
             "LaminasTest\\I18n\\PhoneNumber\\": "test/"
         }
     },
-    "extra": {
-        "laminas": {
-            "module": "Laminas\\I18n\\PhoneNumber"
-        }
-    },
-    "config": {
-        "sort-packages": true,
-        "platform": {
-            "php": "7.4.99"
-        },
-        "allow-plugins": {
-            "dealerdirect/phpcodesniffer-composer-installer": true,
-            "composer/package-versions-deprecated": true
-        }
-    },
     "scripts": {
+        "check": [
+            "@cs-check",
+            "@test",
+            "psalm"
+        ],
         "cs-check": "phpcs",
         "cs-fix": "phpcbf",
+        "static-analysis": "psalm --shepherd --stats",
         "test": "phpunit --colors=always",
         "test-coverage": "phpunit --colors=always --coverage-clover clover.xml"
     }

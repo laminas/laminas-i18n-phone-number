@@ -73,7 +73,6 @@ final class PhoneNumberValue
         PhoneNumberType::STANDARD_RATE        => self::TYPE_STANDARD_RATE,
     ];
 
-
     private LibPhoneNumber $number;
     /** @var non-empty-string */
     private string $regionCode;
