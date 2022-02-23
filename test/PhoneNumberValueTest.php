@@ -147,6 +147,19 @@ class PhoneNumberValueTest extends TestCase
      * @param non-empty-string $number
      * @param non-empty-string $region
      */
+    public function testThatAnyTypeOfValidPhoneNumberCanBeFormattedToAnOutOfCountryNumber(
+        string $number,
+        string $region
+    ): void {
+        $object = PhoneNumberValue::fromString($number, $region);
+        self::assertNotEmpty($object->toNumberDialedFrom('GB'));
+    }
+
+    /**
+     * @dataProvider validPhoneNumberProvider
+     * @param non-empty-string $number
+     * @param non-empty-string $region
+     */
     public function testThatAllValidNumbersWillHaveARegionCode(
         string $number,
         string $region
