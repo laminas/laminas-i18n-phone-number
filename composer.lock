@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "66e59ee286eca650e52f065b89d75287",
+    "content-hash": "09f7d347ff3eb50cf6b95a50017bd77d",
     "packages": [
         {
             "name": "container-interop/container-interop",
@@ -171,16 +171,16 @@
         },
         {
             "name": "laminas/laminas-filter",
-            "version": "2.13.2",
+            "version": "2.14.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-filter.git",
-                "reference": "3da1df596b023fb0387a1dbb0e77e536afd9d1af"
+                "reference": "98a126b8cd069a446054680c9be5f37a61f6dc17"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laminas/laminas-filter/zipball/3da1df596b023fb0387a1dbb0e77e536afd9d1af",
-                "reference": "3da1df596b023fb0387a1dbb0e77e536afd9d1af",
+                "url": "https://api.github.com/repos/laminas/laminas-filter/zipball/98a126b8cd069a446054680c9be5f37a61f6dc17",
+                "reference": "98a126b8cd069a446054680c9be5f37a61f6dc17",
                 "shasum": ""
             },
             "require": {
@@ -246,7 +246,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2022-02-07T13:14:03+00:00"
+            "time": "2022-02-22T23:09:15+00:00"
         },
         {
             "name": "laminas/laminas-stdlib",
@@ -1271,25 +1271,24 @@
         },
         {
             "name": "laminas/laminas-coding-standard",
-            "version": "2.1.4",
+            "version": "2.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-coding-standard.git",
-                "reference": "d75f1acf615232e108da2d2cf5a7df3e527b8f38"
+                "reference": "bcf6e07fe4690240be7beb6d884d0b0fafa6a251"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laminas/laminas-coding-standard/zipball/d75f1acf615232e108da2d2cf5a7df3e527b8f38",
-                "reference": "d75f1acf615232e108da2d2cf5a7df3e527b8f38",
+                "url": "https://api.github.com/repos/laminas/laminas-coding-standard/zipball/bcf6e07fe4690240be7beb6d884d0b0fafa6a251",
+                "reference": "bcf6e07fe4690240be7beb6d884d0b0fafa6a251",
                 "shasum": ""
             },
             "require": {
-                "dealerdirect/phpcodesniffer-composer-installer": "^0.6.2 || ^0.7",
-                "laminas/laminas-zendframework-bridge": "^1.0",
-                "php": "^7.3 || ~8.0.0",
-                "slevomat/coding-standard": "^6.4.1",
-                "squizlabs/php_codesniffer": "^3.5.8",
-                "webimpress/coding-standard": "^1.1.6"
+                "dealerdirect/phpcodesniffer-composer-installer": "^0.7",
+                "php": "^7.3 || ^8.0",
+                "slevomat/coding-standard": "^7.0",
+                "squizlabs/php_codesniffer": "^3.6",
+                "webimpress/coding-standard": "^1.2"
             },
             "type": "phpcodesniffer-standard",
             "autoload": {
@@ -1321,69 +1320,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2020-10-26T07:33:05+00:00"
-        },
-        {
-            "name": "laminas/laminas-zendframework-bridge",
-            "version": "1.4.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/laminas/laminas-zendframework-bridge.git",
-                "reference": "88bf037259869891afce6504cacc4f8a07b24d0f"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/laminas/laminas-zendframework-bridge/zipball/88bf037259869891afce6504cacc4f8a07b24d0f",
-                "reference": "88bf037259869891afce6504cacc4f8a07b24d0f",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.3 || ~8.0.0 || ~8.1.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^9.3",
-                "psalm/plugin-phpunit": "^0.15.1",
-                "squizlabs/php_codesniffer": "^3.5",
-                "vimeo/psalm": "^4.6"
-            },
-            "type": "library",
-            "extra": {
-                "laminas": {
-                    "module": "Laminas\\ZendFrameworkBridge"
-                }
-            },
-            "autoload": {
-                "files": [
-                    "src/autoload.php"
-                ],
-                "psr-4": {
-                    "Laminas\\ZendFrameworkBridge\\": "src//"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "description": "Alias legacy ZF class names to Laminas Project equivalents.",
-            "keywords": [
-                "ZendFramework",
-                "autoloading",
-                "laminas",
-                "zf"
-            ],
-            "support": {
-                "forum": "https://discourse.laminas.dev/",
-                "issues": "https://github.com/laminas/laminas-zendframework-bridge/issues",
-                "rss": "https://github.com/laminas/laminas-zendframework-bridge/releases.atom",
-                "source": "https://github.com/laminas/laminas-zendframework-bridge"
-            },
-            "funding": [
-                {
-                    "url": "https://funding.communitybridge.org/projects/laminas-project",
-                    "type": "community_bridge"
-                }
-            ],
-            "time": "2021-12-21T14:34:37+00:00"
+            "time": "2021-05-29T15:53:59+00:00"
         },
         {
             "name": "myclabs/deep-copy",
@@ -1940,37 +1877,33 @@
         },
         {
             "name": "phpstan/phpdoc-parser",
-            "version": "0.4.9",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpdoc-parser.git",
-                "reference": "98a088b17966bdf6ee25c8a4b634df313d8aa531"
+                "reference": "dbc093d7af60eff5cd575d2ed761b15ed40bd08e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpdoc-parser/zipball/98a088b17966bdf6ee25c8a4b634df313d8aa531",
-                "reference": "98a088b17966bdf6ee25c8a4b634df313d8aa531",
+                "url": "https://api.github.com/repos/phpstan/phpdoc-parser/zipball/dbc093d7af60eff5cd575d2ed761b15ed40bd08e",
+                "reference": "dbc093d7af60eff5cd575d2ed761b15ed40bd08e",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.1 || ^8.0"
             },
             "require-dev": {
-                "consistence/coding-standard": "^3.5",
-                "ergebnis/composer-normalize": "^2.0.2",
-                "jakub-onderka/php-parallel-lint": "^0.9.2",
-                "phing/phing": "^2.16.0",
+                "php-parallel-lint/php-parallel-lint": "^1.2",
                 "phpstan/extension-installer": "^1.0",
-                "phpstan/phpstan": "^0.12.26",
-                "phpstan/phpstan-strict-rules": "^0.12",
-                "phpunit/phpunit": "^6.3",
-                "slevomat/coding-standard": "^4.7.2",
-                "symfony/process": "^4.0"
+                "phpstan/phpstan": "^1.0",
+                "phpstan/phpstan-strict-rules": "^1.0",
+                "phpunit/phpunit": "^9.5",
+                "symfony/process": "^5.2"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "0.4-dev"
+                    "dev-master": "1.0-dev"
                 }
             },
             "autoload": {
@@ -1987,22 +1920,22 @@
             "description": "PHPDoc parser with support for nullable, intersection and generic types",
             "support": {
                 "issues": "https://github.com/phpstan/phpdoc-parser/issues",
-                "source": "https://github.com/phpstan/phpdoc-parser/tree/master"
+                "source": "https://github.com/phpstan/phpdoc-parser/tree/1.2.0"
             },
-            "time": "2020-08-03T20:32:43+00:00"
+            "time": "2021-09-16T20:46:02+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
-            "version": "9.2.11",
+            "version": "9.2.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "665a1ac0a763c51afc30d6d130dac0813092b17f"
+                "reference": "c011a0b6aaa4acd2f39b7f51fb4ad4442b6ec631"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/665a1ac0a763c51afc30d6d130dac0813092b17f",
-                "reference": "665a1ac0a763c51afc30d6d130dac0813092b17f",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/c011a0b6aaa4acd2f39b7f51fb4ad4442b6ec631",
+                "reference": "c011a0b6aaa4acd2f39b7f51fb4ad4442b6ec631",
                 "shasum": ""
             },
             "require": {
@@ -2058,7 +1991,7 @@
             ],
             "support": {
                 "issues": "https://github.com/sebastianbergmann/php-code-coverage/issues",
-                "source": "https://github.com/sebastianbergmann/php-code-coverage/tree/9.2.11"
+                "source": "https://github.com/sebastianbergmann/php-code-coverage/tree/9.2.12"
             },
             "funding": [
                 {
@@ -2066,7 +1999,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-02-18T12:46:09+00:00"
+            "time": "2022-02-23T06:30:26+00:00"
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -2311,16 +2244,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "9.5.14",
+            "version": "9.5.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "1883687169c017d6ae37c58883ca3994cfc34189"
+                "reference": "dc738383c519243b0a967f63943a848d3fd861aa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/1883687169c017d6ae37c58883ca3994cfc34189",
-                "reference": "1883687169c017d6ae37c58883ca3994cfc34189",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/dc738383c519243b0a967f63943a848d3fd861aa",
+                "reference": "dc738383c519243b0a967f63943a848d3fd861aa",
                 "shasum": ""
             },
             "require": {
@@ -2336,7 +2269,7 @@
                 "phar-io/version": "^3.0.2",
                 "php": ">=7.3",
                 "phpspec/prophecy": "^1.12.1",
-                "phpunit/php-code-coverage": "^9.2.7",
+                "phpunit/php-code-coverage": "^9.2.12",
                 "phpunit/php-file-iterator": "^3.0.5",
                 "phpunit/php-invoker": "^3.1.1",
                 "phpunit/php-text-template": "^2.0.3",
@@ -2398,7 +2331,7 @@
             ],
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/9.5.14"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/9.5.15"
             },
             "funding": [
                 {
@@ -2410,7 +2343,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-02-18T12:54:07+00:00"
+            "time": "2022-02-23T08:53:20+00:00"
         },
         {
             "name": "psalm/plugin-phpunit",
@@ -3488,37 +3421,37 @@
         },
         {
             "name": "slevomat/coding-standard",
-            "version": "6.4.1",
+            "version": "7.0.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/slevomat/coding-standard.git",
-                "reference": "696dcca217d0c9da2c40d02731526c1e25b65346"
+                "reference": "b81ac84f41a4797dc25c8ede1b0718e2a74be0fc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/slevomat/coding-standard/zipball/696dcca217d0c9da2c40d02731526c1e25b65346",
-                "reference": "696dcca217d0c9da2c40d02731526c1e25b65346",
+                "url": "https://api.github.com/repos/slevomat/coding-standard/zipball/b81ac84f41a4797dc25c8ede1b0718e2a74be0fc",
+                "reference": "b81ac84f41a4797dc25c8ede1b0718e2a74be0fc",
                 "shasum": ""
             },
             "require": {
                 "dealerdirect/phpcodesniffer-composer-installer": "^0.6.2 || ^0.7",
                 "php": "^7.1 || ^8.0",
-                "phpstan/phpdoc-parser": "0.4.5 - 0.4.9",
-                "squizlabs/php_codesniffer": "^3.5.6"
+                "phpstan/phpdoc-parser": "^1.0.0",
+                "squizlabs/php_codesniffer": "^3.6.1"
             },
             "require-dev": {
-                "phing/phing": "2.16.3",
-                "php-parallel-lint/php-parallel-lint": "1.2.0",
-                "phpstan/phpstan": "0.12.48",
-                "phpstan/phpstan-deprecation-rules": "0.12.5",
-                "phpstan/phpstan-phpunit": "0.12.16",
-                "phpstan/phpstan-strict-rules": "0.12.5",
-                "phpunit/phpunit": "7.5.20|8.5.5|9.4.0"
+                "phing/phing": "2.17.0",
+                "php-parallel-lint/php-parallel-lint": "1.3.1",
+                "phpstan/phpstan": "1.2.0",
+                "phpstan/phpstan-deprecation-rules": "1.0.0",
+                "phpstan/phpstan-phpunit": "1.0.0",
+                "phpstan/phpstan-strict-rules": "1.1.0",
+                "phpunit/phpunit": "7.5.20|8.5.21|9.5.10"
             },
             "type": "phpcodesniffer-standard",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "6.x-dev"
+                    "dev-master": "7.x-dev"
                 }
             },
             "autoload": {
@@ -3533,7 +3466,7 @@
             "description": "Slevomat Coding Standard for PHP_CodeSniffer complements Consistence Coding Standard by providing sniffs with additional checks.",
             "support": {
                 "issues": "https://github.com/slevomat/coding-standard/issues",
-                "source": "https://github.com/slevomat/coding-standard/tree/6.4.1"
+                "source": "https://github.com/slevomat/coding-standard/tree/7.0.18"
             },
             "funding": [
                 {
@@ -3545,7 +3478,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-10-05T12:39:37+00:00"
+            "time": "2021-12-07T17:19:06+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",

@@ -20,7 +20,7 @@
         "laminas/laminas-validator": "^2.16"
     },
     "require-dev": {
-        "laminas/laminas-coding-standard": "~2.1.4",
+        "laminas/laminas-coding-standard": "~2.3.0",
         "phpunit/phpunit": "^9.5",
         "psalm/plugin-phpunit": "^0.16.1",
         "vimeo/psalm": "^4.21"
@@ -46,7 +46,8 @@
             "php": "7.4.99"
         },
         "allow-plugins": {
-            "dealerdirect/phpcodesniffer-composer-installer": true
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "composer/package-versions-deprecated": true
         }
     },
     "scripts": {
