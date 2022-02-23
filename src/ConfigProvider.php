@@ -54,7 +54,9 @@ final class ConfigProvider
     private function validatorConfiguration(): array
     {
         return [
-            'factories' => [],
+            'factories' => [
+                Validator\PhoneNumber::class => Validator\Factory\PhoneNumberFactory::class,
+            ],
         ];
     }
 }
