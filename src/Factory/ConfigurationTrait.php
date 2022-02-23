@@ -15,6 +15,7 @@ use function is_array;
  */
 trait ConfigurationTrait
 {
+    /** @return non-empty-string|null */
     private function defaultCountryCode(ContainerInterface $container): ?string
     {
         $options = $this->componentConfig($container);
