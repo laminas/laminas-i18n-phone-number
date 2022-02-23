@@ -7,7 +7,6 @@ namespace LaminasTest\I18n\PhoneNumber\Filter\Factory;
 use Laminas\I18n\PhoneNumber\Filter\Factory\ToE164Factory;
 use Laminas\I18n\PhoneNumber\Filter\Factory\ToInternationalPhoneNumberFactory;
 use Laminas\I18n\PhoneNumber\Filter\Factory\ToNationalPhoneNumberFactory;
-use Laminas\I18n\PhoneNumber\Filter\ToNationalPhoneNumber;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
