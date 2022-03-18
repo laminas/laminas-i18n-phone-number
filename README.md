@@ -2,7 +2,7 @@
 
 [![Build Status](https://github.com/laminas/laminas-i18n-phone-number/workflows/Continuous%20Integration/badge.svg)](https://github.com/laminas/laminas-i18n-phone-number/actions?query=workflow%3A"Continuous+Integration")
 
-This library provides …
+Validate and format international phone numbers
 
 ## Installation
 
