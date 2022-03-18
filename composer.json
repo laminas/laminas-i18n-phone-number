@@ -1,6 +1,6 @@
 {
     "name": "laminas/laminas-i18n-phone-number",
-    "description": "Validate and format internation phone numbers",
+    "description": "Validate and format international phone numbers",
     "license": "BSD-3-Clause",
     "keywords": [
         "laminas",
