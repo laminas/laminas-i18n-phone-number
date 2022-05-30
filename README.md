@@ -14,7 +14,7 @@ $ composer require laminas/laminas-i18n-phone-number
 
 ## Documentation
 
-Browse the documentation online at https://docs.laminas.dev/laminas-i18n-phone-number/
+Browse the documentation online at https://docs.laminas.dev/laminas-i18n/
 
 ## Support
 
