@@ -29,6 +29,7 @@
     },
     "extra": {
         "laminas": {
+            "component": "Laminas\\I18n\\PhoneNumber",
             "config-provider": "Laminas\\I18n\\PhoneNumber\\ConfigProvider"
         }
     },
