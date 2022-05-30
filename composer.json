@@ -35,6 +35,7 @@
     },
     "require": {
         "php": "^7.4 || ~8.0.0 || ~8.1.0",
+        "ext-intl": "*",
         "giggsey/libphonenumber-for-php": "^8.12",
         "laminas/laminas-filter": "^2.13",
         "laminas/laminas-stdlib": "^3.7",
