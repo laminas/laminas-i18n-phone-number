@@ -9,9 +9,9 @@
         "validation",
         "phonenumber"
     ],
-    "homepage": "https://laminas.dev",
+    "homepage": "https://getlaminas.org",
     "support": {
-        "docs": "https://docs.laminas.dev/laminas-i18n-phone-number/",
+        "docs": "https://docs.laminas.dev/laminas-i18n/",
         "issues": "https://github.com/laminas/laminas-i18n-phone-number/issues",
         "source": "https://github.com/laminas/laminas-i18n-phone-number",
         "rss": "https://github.com/laminas/laminas-i18n-phone-number/releases.atom",
