@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace LaminasTest\I18n\PhoneNumber\Filter;
 
-use Laminas\I18n\PhoneNumber\Exception\InvalidOptionException;
+use Laminas\I18n\PhoneNumber\CountryCode;
 use Laminas\I18n\PhoneNumber\Filter\AbstractFilter;
 use Laminas\I18n\PhoneNumber\Filter\ToE164;
 use Laminas\I18n\PhoneNumber\Filter\ToInternationalPhoneNumber;
@@ -28,34 +28,10 @@ class AbstractFilterTest extends TestCase
      * @dataProvider filterClassProvider
      * @param class-string<AbstractFilter> $class
      */
-    public function testThatAnInvalidCountryCodeWillCauseAnException(string $class): void
-    {
-        $this->expectException(InvalidOptionException::class);
-        $this->expectExceptionMessage(
-            'The fallback country code must be an ISO 3166 2 letter country code. Received "Whut?"'
-        );
-        new $class('Whut?');
-    }
-
-    /**
-     * @dataProvider filterClassProvider
-     * @param class-string<AbstractFilter> $class
-     */
-    public function testThatWithoutAFallbackCountryANumberWillBeReturnedAsIs(string $class): void
-    {
-        $number = '01234 567 890';
-        $filter = new $class();
-        self::assertSame($number, $filter->filter($number));
-    }
-
-    /**
-     * @dataProvider filterClassProvider
-     * @param class-string<AbstractFilter> $class
-     */
     public function testThatWithAFallbackCountryANumberWillBeFormatted(string $class): void
     {
         $number = '01234 567 890';
-        $filter = new $class('GB');
+        $filter = new $class(CountryCode::fromString('GB'));
         self::assertNotEquals($number, $filter->filter($number));
     }
 
@@ -67,7 +43,7 @@ class AbstractFilterTest extends TestCase
     {
         $number = '01234 567 890';
         $value  = PhoneNumberValue::fromString($number, 'GB');
-        $filter = new $class();
+        $filter = new $class(CountryCode::fromString('US'));
 
         $filtered = $filter->filter($value);
         self::assertIsString($filtered);
@@ -79,7 +55,7 @@ class AbstractFilterTest extends TestCase
      */
     public function testThatNonScalarValuesWillBeReturnedAsIs(string $class): void
     {
-        $filter = new $class('GB');
+        $filter = new $class(CountryCode::fromString('GB'));
         self::assertSame([], $filter->filter([]));
     }
 
@@ -89,7 +65,7 @@ class AbstractFilterTest extends TestCase
      */
     public function testThatEmptyOrNonStringValuesWillBeReturnedAsIs(string $class): void
     {
-        $filter = new $class('GB');
+        $filter = new $class(CountryCode::fromString('GB'));
         self::assertSame('', $filter->filter(''));
         self::assertNull($filter->filter(null));
         self::assertSame(0, $filter->filter(0));

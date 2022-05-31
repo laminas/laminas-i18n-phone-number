@@ -4,21 +4,33 @@ declare(strict_types=1);
 
 namespace LaminasTest\I18n\PhoneNumber\Filter;
 
+use Laminas\I18n\PhoneNumber\CountryCode;
 use Laminas\I18n\PhoneNumber\Filter\ToNationalPhoneNumber;
 use PHPUnit\Framework\TestCase;
 
 class ToNationalPhoneNumberTest extends TestCase
 {
-    public function testToNational(): void
+    public function testExpectedOutputWhenTheDefaultCountryCodeMatchesTheInput(): void
     {
         self::assertEquals(
             '01234 567890',
-            (new ToNationalPhoneNumber('GB'))->filter('01234 567 890')
+            (new ToNationalPhoneNumber(CountryCode::fromString('GB')))->filter('01234 56 78 90')
         );
+    }
 
+    public function testTheFilterWillNotOperateOnStringsThatCannotBeRecognised(): void
+    {
         self::assertEquals(
-            '01234 567 890',
-            (new ToNationalPhoneNumber())->filter('01234 567 890')
+            'Foo',
+            (new ToNationalPhoneNumber(CountryCode::fromString('US')))->filter('Foo')
+        );
+    }
+
+    public function testRecognisableNumbersWillBeFilteredRegardlessOfConfiguredCountry(): void
+    {
+        self::assertEquals(
+            '01234 567890',
+            (new ToNationalPhoneNumber(CountryCode::fromString('ZA')))->filter('+44 (0) 1234 567 890')
         );
     }
 }
