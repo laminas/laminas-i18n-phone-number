@@ -52,17 +52,20 @@ class PhoneNumberTest extends TestCase
         self::assertFailureMessage($validator, PhoneNumber::NO_MATCH);
     }
 
-    /** @return array<array-key, array{0: string}> */
+    /** @return array<array-key, array{0: non-empty-string}> */
     public function invalidCountryProvider(): array
     {
         return [
             ['nuts'],
             ['1'],
-            [''],
+            ['en_Muppet'],
         ];
     }
 
-    /** @dataProvider invalidCountryProvider */
+    /**
+     * @param non-empty-string $option
+     * @dataProvider invalidCountryProvider
+     */
     public function testInvalidCountryOption(string $option): void
     {
         $this->expectException(InvalidOptionException::class);
@@ -104,6 +107,15 @@ class PhoneNumberTest extends TestCase
             'country' => 'GB',
         ]);
         self::assertTrue($validator->isValid('+1 201 555 0123'));
+    }
+
+    public function testThatTheCountryOptionCanAlsoBeALocaleString(): void
+    {
+        $validator = new PhoneNumber([
+            'country' => 'en_GB',
+        ]);
+        self::assertTrue($validator->isValid('+1 201 555 0123'));
+        self::assertTrue($validator->isValid('01234 567 890'));
     }
 
     /**

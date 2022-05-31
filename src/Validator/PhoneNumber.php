@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Laminas\I18n\PhoneNumber\Validator;
 
+use Laminas\I18n\PhoneNumber\CountryCode;
 use Laminas\I18n\PhoneNumber\Exception\InvalidOptionException;
 use Laminas\I18n\PhoneNumber\Exception\InvalidPhoneNumberException;
 use Laminas\I18n\PhoneNumber\Exception\UnrecognizableNumberException;
@@ -13,8 +14,7 @@ use Laminas\Validator\AbstractValidator;
 use Traversable;
 
 use function is_scalar;
-use function preg_match;
-use function strtoupper;
+use function sprintf;
 
 /**
  * @psalm-type Options = array{
@@ -42,10 +42,8 @@ final class PhoneNumber extends AbstractValidator
      *
      * If provided, phone numbers without an international prefix will be validated
      * as a national number in this country.
-     *
-     * @var non-empty-string|null
      */
-    private ?string $country = null;
+    private ?CountryCode $country = null;
 
     /**
      * Validate for specific types of phone number
@@ -94,7 +92,7 @@ final class PhoneNumber extends AbstractValidator
         }
 
         try {
-            $number = PhoneNumberValue::fromString($value, $this->country);
+            $number = PhoneNumberValue::fromString($value, $this->country ? $this->country->toString() : null);
         } catch (UnrecognizableNumberException $error) {
             $this->error(self::NO_MATCH);
 
@@ -115,13 +113,19 @@ final class PhoneNumber extends AbstractValidator
         return true;
     }
 
-    public function setCountry(string $country): void
+    /** @param non-empty-string $countryCodeOrLocale */
+    public function setCountry(string $countryCodeOrLocale): void
     {
-        if ($country === '' || ! preg_match('/^[A-Z]{2}$/i', $country)) {
-            throw new InvalidOptionException('Country codes must be ISO 3166 2-letter codes');
+        $code = CountryCode::tryFromString($countryCodeOrLocale);
+
+        if (! $code) {
+            throw new InvalidOptionException(sprintf(
+                'Country codes must be ISO 3166 2-letter codes or Locale strings. Received "%s"',
+                $countryCodeOrLocale
+            ));
         }
 
-        $this->country = strtoupper($country);
+        $this->country = $code;
     }
 
     public function setAllowedTypes(int $types): void

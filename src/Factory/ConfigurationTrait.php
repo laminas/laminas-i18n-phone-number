@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Laminas\I18n\PhoneNumber\Factory;
 
 use Laminas\I18n\PhoneNumber\ConfigProvider;
+use Laminas\I18n\PhoneNumber\CountryCode;
 use Psr\Container\ContainerInterface;
 
 use function is_array;
@@ -15,12 +16,11 @@ use function is_array;
  */
 trait ConfigurationTrait
 {
-    /** @return non-empty-string|null */
-    private function defaultCountryCode(ContainerInterface $container): ?string
+    private function defaultCountryCode(ContainerInterface $container): CountryCode
     {
         $options = $this->componentConfig($container);
 
-        return $options['default-country-code'] ?? null;
+        return CountryCode::detect($options['default-country-code'] ?? null);
     }
 
     /** @return PackageConfig */

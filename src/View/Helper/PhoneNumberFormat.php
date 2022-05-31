@@ -4,25 +4,17 @@ declare(strict_types=1);
 
 namespace Laminas\I18n\PhoneNumber\View\Helper;
 
+use Laminas\I18n\PhoneNumber\CountryCode;
 use Laminas\I18n\PhoneNumber\Exception\ExceptionInterface;
-use Laminas\I18n\PhoneNumber\Exception\InvalidArgumentException;
 use Laminas\I18n\PhoneNumber\PhoneNumberValue;
-
-use function preg_match;
-use function strtoupper;
 
 final class PhoneNumberFormat
 {
-    /** @var non-empty-string|null */
-    private ?string $country;
+    private CountryCode $country;
 
-    /**
-     * @param non-empty-string|null $defaultCountryCode
-     * @throws InvalidArgumentException If the country code is not a valid ISO 3166 string.
-     */
-    public function __construct(?string $defaultCountryCode = null)
+    public function __construct(CountryCode $defaultCountryCode)
     {
-        $this->country = self::assertValidCountryCode($defaultCountryCode);
+        $this->country = $defaultCountryCode;
     }
 
     public function __invoke(): self
@@ -31,43 +23,25 @@ final class PhoneNumberFormat
     }
 
     /**
-     * @param non-empty-string|null $code
-     * @return non-empty-string|null
+     * @param non-empty-string|null $countryCodeOrLocale
      */
-    private static function assertValidCountryCode(?string $code): ?string
+    private function coalesceCountryCode(?string $countryCodeOrLocale): CountryCode
     {
-        if (empty($code)) {
-            return null;
-        }
+        $countryCodeOrLocale = $countryCodeOrLocale ? CountryCode::tryFromString($countryCodeOrLocale) : null;
 
-        if (! preg_match('/^[A-Z]{2}$/i', $code)) {
-            throw new InvalidArgumentException('Country codes should be 2 letter ISO 3166 strings');
-        }
-
-        return strtoupper($code);
-    }
-
-    /**
-     * @param non-empty-string|null $code
-     * @return non-empty-string|null
-     */
-    private function coalesceCountryCode(?string $code): ?string
-    {
-        $code = self::assertValidCountryCode($code);
-
-        return $code ?: $this->country;
+        return $countryCodeOrLocale ?: $this->country;
     }
 
     /**
      * @param non-empty-string      $number
-     * @param non-empty-string|null $country
+     * @param non-empty-string|null $countryCodeOrLocale
      */
-    public function toPhoneNumber(string $number, ?string $country = null): ?PhoneNumberValue
+    public function toPhoneNumber(string $number, ?string $countryCodeOrLocale = null): ?PhoneNumberValue
     {
         try {
             return PhoneNumberValue::fromString(
                 $number,
-                $this->coalesceCountryCode($country)
+                $this->coalesceCountryCode($countryCodeOrLocale)->toString()
             );
         } catch (ExceptionInterface $error) {
             return null;
@@ -76,44 +50,44 @@ final class PhoneNumberFormat
 
     /**
      * @param non-empty-string      $number
-     * @param non-empty-string|null $country
+     * @param non-empty-string|null $countryCodeOrLocale
      */
-    public function toE164(string $number, ?string $country = null): string
+    public function toE164(string $number, ?string $countryCodeOrLocale = null): string
     {
-        $phone = $this->toPhoneNumber($number, $country);
+        $phone = $this->toPhoneNumber($number, $countryCodeOrLocale);
 
         return $phone ? $phone->toE164() : $number;
     }
 
     /**
      * @param non-empty-string      $number
-     * @param non-empty-string|null $country
+     * @param non-empty-string|null $countryCodeOrLocale
      */
-    public function toNational(string $number, ?string $country = null): string
+    public function toNational(string $number, ?string $countryCodeOrLocale = null): string
     {
-        $phone = $this->toPhoneNumber($number, $country);
+        $phone = $this->toPhoneNumber($number, $countryCodeOrLocale);
 
         return $phone ? $phone->toNational() : $number;
     }
 
     /**
      * @param non-empty-string      $number
-     * @param non-empty-string|null $country
+     * @param non-empty-string|null $countryCodeOrLocale
      */
-    public function toInternational(string $number, ?string $country = null): string
+    public function toInternational(string $number, ?string $countryCodeOrLocale = null): string
     {
-        $phone = $this->toPhoneNumber($number, $country);
+        $phone = $this->toPhoneNumber($number, $countryCodeOrLocale);
 
         return $phone ? $phone->toInternational() : $number;
     }
 
     /**
      * @param non-empty-string      $number
-     * @param non-empty-string|null $country
+     * @param non-empty-string|null $countryCodeOrLocale
      */
-    public function toRfc3966(string $number, ?string $country = null): string
+    public function toRfc3966(string $number, ?string $countryCodeOrLocale = null): string
     {
-        $phone = $this->toPhoneNumber($number, $country);
+        $phone = $this->toPhoneNumber($number, $countryCodeOrLocale);
 
         return $phone ? $phone->toRfc3966() : $number;
     }

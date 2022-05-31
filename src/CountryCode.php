@@ -86,6 +86,20 @@ final class CountryCode
 
         /** @psalm-var non-empty-string $countryCodeOrLocale */
 
+        $code = self::tryFromString($countryCodeOrLocale);
+        if ($code) {
+            return $code;
+        }
+
+        throw new InvalidArgumentException(sprintf(
+            'The string "%s" could not be understood as either a locale or an ISO 3166 country code',
+            $countryCodeOrLocale
+        ));
+    }
+
+    /** @param non-empty-string $countryCodeOrLocale */
+    public static function tryFromString(string $countryCodeOrLocale): ?self
+    {
         try {
             return self::fromLocale($countryCodeOrLocale);
         } catch (InvalidArgumentException $e) {
@@ -96,9 +110,6 @@ final class CountryCode
         } catch (InvalidArgumentException $e) {
         }
 
-        throw new InvalidArgumentException(sprintf(
-            'The string "%s" could not be understood as either a locale or an ISO 3166 country code',
-            $countryCodeOrLocale
-        ));
+        return null;
     }
 }

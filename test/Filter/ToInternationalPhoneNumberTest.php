@@ -4,21 +4,33 @@ declare(strict_types=1);
 
 namespace LaminasTest\I18n\PhoneNumber\Filter;
 
+use Laminas\I18n\PhoneNumber\CountryCode;
 use Laminas\I18n\PhoneNumber\Filter\ToInternationalPhoneNumber;
 use PHPUnit\Framework\TestCase;
 
 class ToInternationalPhoneNumberTest extends TestCase
 {
-    public function testToInternational(): void
+    public function testExpectedOutputWhenTheDefaultCountryCodeMatchesTheInput(): void
     {
         self::assertEquals(
             '+44 1234 567890',
-            (new ToInternationalPhoneNumber('GB'))->filter('01234 567 890')
+            (new ToInternationalPhoneNumber(CountryCode::fromString('GB')))->filter('01234 567 890')
         );
+    }
 
+    public function testTheFilterWillNotOperateOnStringsThatCannotBeRecognised(): void
+    {
         self::assertEquals(
-            '01234 567 890',
-            (new ToInternationalPhoneNumber())->filter('01234 567 890')
+            'Foo',
+            (new ToInternationalPhoneNumber(CountryCode::fromString('US')))->filter('Foo')
+        );
+    }
+
+    public function testRecognisableNumbersWillBeFilteredRegardlessOfConfiguredCountry(): void
+    {
+        self::assertEquals(
+            '+44 1234 567890',
+            (new ToInternationalPhoneNumber(CountryCode::fromString('ZA')))->filter('+44 (0) 1234 567 890')
         );
     }
 }
