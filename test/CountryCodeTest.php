@@ -82,7 +82,7 @@ class CountryCodeTest extends TestCase
      */
     public function testCountryCodesCanBeConstructedFromLocales(string $input, string $expect): void
     {
-        $code = CountryCode::fromLocale($input);
+        $code = CountryCode::fromLocaleString($input);
         self::assertEquals($expect, $code->toString());
     }
 
@@ -90,7 +90,7 @@ class CountryCodeTest extends TestCase
     {
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('The string "Wrong" could not be parsed as a valid locale');
-        CountryCode::fromLocale('Wrong');
+        CountryCode::fromLocaleString('Wrong');
     }
 
     /** @return list<array{0:non-empty-string, 1:non-empty-string}> */

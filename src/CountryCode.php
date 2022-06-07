@@ -59,7 +59,7 @@ final class CountryCode
     }
 
     /** @param non-empty-string $locale */
-    public static function fromLocale(string $locale): self
+    public static function fromLocaleString(string $locale): self
     {
         $region = Locale::getRegion($locale);
         /** @psalm-suppress TypeDoesNotContainNull */
@@ -101,7 +101,7 @@ final class CountryCode
     public static function tryFromString(string $countryCodeOrLocale): ?self
     {
         try {
-            return self::fromLocale($countryCodeOrLocale);
+            return self::fromLocaleString($countryCodeOrLocale);
         } catch (InvalidArgumentException $e) {
         }
 
