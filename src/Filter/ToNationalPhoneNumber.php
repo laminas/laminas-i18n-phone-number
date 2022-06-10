@@ -17,7 +17,7 @@ final class ToNationalPhoneNumber extends AbstractFilter
      */
     public function filter($value)
     {
-        $number = $this->mixedToPhoneNumber($value);
+        $number = $this->tryMixedToPhoneNumber($value);
 
         return $number ? $number->toNational() : $value;
     }

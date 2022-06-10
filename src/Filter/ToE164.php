@@ -17,7 +17,7 @@ final class ToE164 extends AbstractFilter
      */
     public function filter($value)
     {
-        $number = $this->mixedToPhoneNumber($value);
+        $number = $this->tryMixedToPhoneNumber($value);
 
         return $number ? $number->toE164() : $value;
     }
