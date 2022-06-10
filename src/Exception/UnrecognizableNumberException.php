@@ -11,6 +11,7 @@ use function sprintf;
 
 final class UnrecognizableNumberException extends InvalidArgumentException implements ExceptionInterface
 {
+    /** @psalm-pure */
     public static function withString(string $number, ?Throwable $previous = null): self
     {
         return new self(sprintf(

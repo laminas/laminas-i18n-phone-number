@@ -10,9 +10,10 @@ use function sprintf;
 
 final class InvalidPhoneNumberException extends InvalidArgumentException implements ExceptionInterface
 {
+    /** @psalm-pure */
     public static function with(string $phoneNumber, ?string $countryCode): self
     {
-        if (! empty($countryCode)) {
+        if ($countryCode !== null && $countryCode !== '') {
             return self::invalidNumberForRegion($phoneNumber, $countryCode);
         }
 
@@ -22,6 +23,7 @@ final class InvalidPhoneNumberException extends InvalidArgumentException impleme
         ));
     }
 
+    /** @psalm-pure */
     public static function invalidNumberForRegion(string $phoneNumber, string $countryCode): self
     {
         return new self(sprintf(
@@ -31,6 +33,7 @@ final class InvalidPhoneNumberException extends InvalidArgumentException impleme
         ));
     }
 
+    /** @psalm-pure */
     public static function undetectableRegion(string $phoneNumber): self
     {
         return new self(sprintf(
