@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace LaminasTest\I18n\PhoneNumber\Filter\Factory;
+namespace Laminas\I18n\PhoneNumber\Test\Filter\Factory;
 
 use Laminas\I18n\PhoneNumber\Filter\Factory\ToE164Factory;
 use Laminas\I18n\PhoneNumber\Filter\Factory\ToInternationalPhoneNumberFactory;

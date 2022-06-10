@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace LaminasTest\I18n\PhoneNumber\Filter;
+namespace Laminas\I18n\PhoneNumber\Test\Filter;
 
 use Laminas\I18n\PhoneNumber\CountryCode;
 use Laminas\I18n\PhoneNumber\Filter\ToInternationalPhoneNumber;

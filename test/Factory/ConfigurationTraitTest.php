@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace LaminasTest\I18n\PhoneNumber\Factory;
+namespace Laminas\I18n\PhoneNumber\Test\Factory;
 
 use Laminas\I18n\PhoneNumber\CountryCode;
 use Locale;

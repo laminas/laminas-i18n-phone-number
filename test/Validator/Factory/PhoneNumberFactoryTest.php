@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace LaminasTest\I18n\PhoneNumber\Validator\Factory;
+namespace Laminas\I18n\PhoneNumber\Test\Validator\Factory;
 
 use Laminas\I18n\PhoneNumber\PhoneNumberValue;
 use Laminas\I18n\PhoneNumber\Validator\Factory\PhoneNumberFactory;

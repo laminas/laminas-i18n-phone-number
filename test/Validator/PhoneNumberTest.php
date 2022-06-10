@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace LaminasTest\I18n\PhoneNumber\Validator;
+namespace Laminas\I18n\PhoneNumber\Test\Validator;
 
 use ArrayObject;
 use Laminas\I18n\PhoneNumber\Exception\InvalidOptionException;
 use Laminas\I18n\PhoneNumber\PhoneNumberValue;
 use Laminas\I18n\PhoneNumber\Validator\PhoneNumber;
-use LaminasTest\I18n\PhoneNumber\NumberGeneratorTrait;
+use Laminas\I18n\PhoneNumber\Test\NumberGeneratorTrait;
 use PHPUnit\Framework\TestCase;
 
 use const PHP_INT_MAX;

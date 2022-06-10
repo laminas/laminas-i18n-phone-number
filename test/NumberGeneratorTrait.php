@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace LaminasTest\I18n\PhoneNumber;
+namespace Laminas\I18n\PhoneNumber\Test;
 
 use Generator;
 use Laminas\I18n\PhoneNumber\PhoneNumberValue;
@@ -16,7 +16,7 @@ use function is_string;
 use function sprintf;
 
 /**
- * @internal \LaminasTest\I18n
+ * @internal \Laminas\I18n\PhoneNumber\Test
  */
 trait NumberGeneratorTrait
 {
