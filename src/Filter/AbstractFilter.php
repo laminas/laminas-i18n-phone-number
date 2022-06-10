@@ -11,17 +11,15 @@ use Laminas\I18n\PhoneNumber\PhoneNumberValue;
 
 use function is_scalar;
 
+/** @internal Laminas\i18n  */
 abstract class AbstractFilter implements FilterInterface
 {
-    private CountryCode $countryCode;
-
-    final public function __construct(CountryCode $countryCode)
-    {
-        $this->countryCode = $countryCode;
+    final public function __construct(
+        private readonly CountryCode $countryCode
+    ) {
     }
 
-    /** @param mixed $value */
-    protected function mixedToPhoneNumber($value): ?PhoneNumberValue
+    final protected function tryMixedToPhoneNumber(mixed $value): ?PhoneNumberValue
     {
         if ($value instanceof PhoneNumberValue) {
             return $value;
@@ -38,7 +36,7 @@ abstract class AbstractFilter implements FilterInterface
 
         try {
             return PhoneNumberValue::fromString($input, $this->countryCode->toString());
-        } catch (ExceptionInterface $error) {
+        } catch (ExceptionInterface) {
             return null;
         }
     }
