@@ -7,8 +7,8 @@ namespace Laminas\I18n\PhoneNumber\Test\Validator;
 use ArrayObject;
 use Laminas\I18n\PhoneNumber\Exception\InvalidOptionException;
 use Laminas\I18n\PhoneNumber\PhoneNumberValue;
-use Laminas\I18n\PhoneNumber\Validator\PhoneNumber;
 use Laminas\I18n\PhoneNumber\Test\NumberGeneratorTrait;
+use Laminas\I18n\PhoneNumber\Validator\PhoneNumber;
 use PHPUnit\Framework\TestCase;
 
 use const PHP_INT_MAX;
