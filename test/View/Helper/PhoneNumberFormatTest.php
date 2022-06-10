@@ -22,25 +22,25 @@ class PhoneNumberFormatTest extends TestCase
     public function testThatThePhoneNumberWillBeNullWhenInvalid(): void
     {
         $helper = new PhoneNumberFormat(CountryCode::fromString('GB'));
-        self::assertNull($helper->toPhoneNumber('NaN'));
+        self::assertNull($helper->tryToPhoneNumber('NaN'));
     }
 
     public function testThePhoneNumberWillBeNonNullWhenValidWithoutMatchingCountryCode(): void
     {
         $helper = new PhoneNumberFormat(CountryCode::fromString('US'));
-        self::assertNotNull($helper->toPhoneNumber('+44 1234 567 890'));
+        self::assertNotNull($helper->tryToPhoneNumber('+44 1234 567 890'));
     }
 
     public function testThePhoneNumberWillBeNonNullWhenValidAgainstDefaultCountry(): void
     {
         $helper = new PhoneNumberFormat(CountryCode::fromString('GB'));
-        self::assertNotNull($helper->toPhoneNumber('01234 567 890'));
+        self::assertNotNull($helper->tryToPhoneNumber('01234 567 890'));
     }
 
     public function testThePhoneNumberWillBeNonNullWhenValidAgainstGivenCountry(): void
     {
         $helper = new PhoneNumberFormat(CountryCode::fromString('UA'));
-        self::assertNotNull($helper->toPhoneNumber('01234 567 890', 'GB'));
+        self::assertNotNull($helper->tryToPhoneNumber('01234 567 890', 'GB'));
     }
 
     public function testE164FormatYieldsTheExpectedValue(): void
