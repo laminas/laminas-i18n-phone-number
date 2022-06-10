@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace LaminasTest\I18n\PhoneNumber\View\Helper\Factory;
+namespace Laminas\I18n\PhoneNumber\Test\View\Helper\Factory;
 
 use Laminas\I18n\PhoneNumber\View\Helper\Factory\PhoneNumberFormatFactory;
 use PHPUnit\Framework\MockObject\MockObject;

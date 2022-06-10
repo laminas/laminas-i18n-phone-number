@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace LaminasTest\I18n\PhoneNumber;
+namespace Laminas\I18n\PhoneNumber\Test;
 
 use Laminas\I18n\PhoneNumber\Exception\ExceptionInterface;
 use Laminas\I18n\PhoneNumber\Exception\InvalidPhoneNumberException;
@@ -12,7 +12,7 @@ use PHPUnit\Framework\TestCase;
 
 class PhoneNumberValueTest extends TestCase
 {
-    /** @uses \LaminasTest\I18n\PhoneNumber\NumberGeneratorTrait */
+    /** @uses \Laminas\I18n\PhoneNumber\Test\NumberGeneratorTrait */
     use NumberGeneratorTrait;
 
     public function testAnExceptionIsThrownForInvalidInput(): void

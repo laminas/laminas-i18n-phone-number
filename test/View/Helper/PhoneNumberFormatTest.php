@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace LaminasTest\I18n\PhoneNumber\View\Helper;
+namespace Laminas\I18n\PhoneNumber\Test\View\Helper;
 
 use Laminas\I18n\PhoneNumber\CountryCode;
 use Laminas\I18n\PhoneNumber\View\Helper\PhoneNumberFormat;

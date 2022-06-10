@@ -56,7 +56,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "LaminasTest\\I18n\\PhoneNumber\\": "test/"
+            "Laminas\\I18n\\PhoneNumber\\Test\\": "test/"
         }
     },
     "scripts": {

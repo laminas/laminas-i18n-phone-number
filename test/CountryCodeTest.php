@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace LaminasTest\I18n\PhoneNumber;
+namespace Laminas\I18n\PhoneNumber\Test;
 
 use Laminas\I18n\PhoneNumber\CountryCode;
 use Laminas\I18n\PhoneNumber\Exception\InvalidArgumentException;
