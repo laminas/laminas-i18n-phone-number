@@ -13,7 +13,10 @@ use Laminas\Stdlib\ArrayUtils;
 use Laminas\Validator\AbstractValidator;
 use Traversable;
 
+use function assert;
+use function is_int;
 use function is_scalar;
+use function is_string;
 use function sprintf;
 
 /**
@@ -52,20 +55,20 @@ final class PhoneNumber extends AbstractValidator
      */
     private int $allowTypes = PhoneNumberValue::TYPE_ANY;
 
-    /** @param Options|Traversable|null $options */
+    /** @param Options|Traversable<string, mixed>|null $options */
     public function __construct($options = null)
     {
         if ($options instanceof Traversable) {
             $options = ArrayUtils::iteratorToArray($options);
         }
 
-        /** @psalm-var Options $options */
-
         if (isset($options['country'])) {
+            assert(is_string($options['country']) && $options['country'] !== '');
             $this->setCountry($options['country']);
         }
 
         if (isset($options['allowed_types'])) {
+            assert(is_int($options['allowed_types']));
             $this->setAllowedTypes($options['allowed_types']);
         }
 
@@ -85,19 +88,19 @@ final class PhoneNumber extends AbstractValidator
 
         $this->setValue($value);
 
-        if (empty($value)) {
+        if ($value === '') {
             $this->error(self::INVALID_TYPE);
 
             return false;
         }
 
         try {
-            $number = PhoneNumberValue::fromString($value, $this->country ? $this->country->toString() : null);
-        } catch (UnrecognizableNumberException $error) {
+            $number = PhoneNumberValue::fromString($value, $this->country?->toString());
+        } catch (UnrecognizableNumberException) {
             $this->error(self::NO_MATCH);
 
             return false;
-        } catch (InvalidPhoneNumberException $error) {
+        } catch (InvalidPhoneNumberException) {
             $this->error(self::INVALID);
 
             return false;
