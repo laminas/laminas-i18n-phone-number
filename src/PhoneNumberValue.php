@@ -73,23 +73,24 @@ final class PhoneNumberValue
         PhoneNumberType::STANDARD_RATE        => self::TYPE_STANDARD_RATE,
     ];
 
-    private LibPhoneNumber $number;
-    /** @var non-empty-string */
-    private string $regionCode;
-    private bool $shortNumber;
-
-    /** @param non-empty-string $regionCode */
+    /**
+     * @param non-empty-string $regionCode The ISO 3166 Country Code associated with the number
+     * @param bool $isShortNumber Whether this number is considered a 'short number' or not
+     */
     private function __construct(
-        LibPhoneNumber $number,
-        string $regionCode,
-        bool $shortNumber
+        private readonly LibPhoneNumber $number,
+        public readonly string $regionCode,
+        public readonly bool $isShortNumber
     ) {
-        $this->number      = $number;
-        $this->regionCode  = $regionCode;
-        $this->shortNumber = $shortNumber;
     }
 
     /**
+     * Create a value object with the given phone number
+     *
+     * The optional country code is used to validate a local or national phone number and can be omitted if you are
+     * sure that the phone number includes a leading country dialing code. It is ignored when an international phone
+     * number is provided.
+     *
      * @param non-empty-string      $phoneNumber
      * @param non-empty-string|null $countryCode
      * @throws UnrecognizableNumberException If it is impossible to parse the given string.
@@ -132,29 +133,11 @@ final class PhoneNumberValue
 
     public function __toString(): string
     {
-        if ($this->shortNumber) {
+        if ($this->isShortNumber) {
             return $this->toNational();
         }
 
         return $this->toE164();
-    }
-
-    /**
-     * The ISO 3166 Country Code associated with the number
-     *
-     * @return non-empty-string
-     */
-    public function regionCode(): string
-    {
-        return $this->regionCode;
-    }
-
-    /**
-     * Whether this number is considered a 'short number' or not
-     */
-    public function isShortNumber(): bool
-    {
-        return $this->shortNumber;
     }
 
     public function toE164(): string
@@ -186,7 +169,7 @@ final class PhoneNumberValue
     {
         $type = PhoneNumberUtil::getInstance()->getNumberType($this->number);
 
-        if ($this->isShortNumber()) {
+        if ($this->isShortNumber) {
             $short = ShortNumberInfo::getInstance();
             if ($short->isEmergencyNumber($this->toNational(), $this->regionCode)) {
                 return self::TYPE_EMERGENCY;
@@ -219,6 +202,6 @@ final class PhoneNumberValue
             ? $regionCode
             : $givenCode;
 
-        return empty($regionCode) ? null : $regionCode;
+        return $regionCode !== '' ? $regionCode : null;
     }
 }

@@ -168,7 +168,7 @@ class PhoneNumberValueTest extends TestCase
          * The example numbers do not necessarily match the given region to the detected region
          */
         $object = PhoneNumberValue::fromString($number, $region);
-        self::assertNotEmpty($object->regionCode());
+        self::assertNotEmpty($object->regionCode);
     }
 
     /** @return array<string, array{0: non-empty-string, 1: non-empty-string}> */
@@ -211,7 +211,7 @@ class PhoneNumberValueTest extends TestCase
     public function testThatAnEmergencyNumberIsDetected(): void
     {
         $number = PhoneNumberValue::fromString('911', 'US');
-        self::assertTrue($number->isShortNumber());
+        self::assertTrue($number->isShortNumber);
         self::assertEquals(PhoneNumberValue::TYPE_EMERGENCY, $number->type());
     }
 
