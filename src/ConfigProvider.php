@@ -7,16 +7,27 @@ namespace Laminas\I18n\PhoneNumber;
 use Laminas\ServiceManager\ConfigInterface;
 
 /**
- * @see ConfigInterface
+ * A configuration provider for use with other Laminas components and Mezzio applications
+ *
+ * @link ConfigInterface
  *
  * @psalm-import-type ServiceManagerConfigurationType from ConfigInterface
  *
  * @psalm-type PackageConfig = array{
- *     default-country-code?: non-empty-string|null
+ *     default-country-code?: non-empty-string|null,
+ *     acceptable-number-types?: int
  * }
  */
 final class ConfigProvider
 {
+    /**
+     * @return array{
+     *     laminas-i18n-phone-number: PackageConfig,
+     *     filters: ServiceManagerConfigurationType,
+     *     validators: ServiceManagerConfigurationType,
+     *     view_helpers: ServiceManagerConfigurationType,
+     * }
+     */
     public function __invoke(): array
     {
         return [
