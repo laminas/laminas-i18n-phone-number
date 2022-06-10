@@ -8,6 +8,7 @@ use function sprintf;
 
 final class InvalidArgumentException extends \InvalidArgumentException implements ExceptionInterface
 {
+    /** @psalm-pure */
     public static function withInvalidCountryCode(string $received): self
     {
         return new self(sprintf(
@@ -16,6 +17,7 @@ final class InvalidArgumentException extends \InvalidArgumentException implement
         ));
     }
 
+    /** @psalm-pure */
     public static function withUnknownCountryCode(string $code): self
     {
         return new self(sprintf(
@@ -24,6 +26,7 @@ final class InvalidArgumentException extends \InvalidArgumentException implement
         ));
     }
 
+    /** @psalm-pure */
     public static function withUnrecognizableLocaleString(string $locale): self
     {
         return new self(sprintf(
@@ -32,6 +35,7 @@ final class InvalidArgumentException extends \InvalidArgumentException implement
         ));
     }
 
+    /** @psalm-pure */
     public static function withUndetectableCountryCode(string $localeOrCode): self
     {
         return new self(sprintf(
