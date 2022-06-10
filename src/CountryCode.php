@@ -128,12 +128,12 @@ final class CountryCode
     {
         try {
             return self::fromLocaleString($countryCodeOrLocale);
-        } catch (InvalidArgumentException $e) {
+        } catch (InvalidArgumentException) {
         }
 
         try {
             return self::fromString($countryCodeOrLocale);
-        } catch (InvalidArgumentException $e) {
+        } catch (InvalidArgumentException) {
         }
 
         return null;

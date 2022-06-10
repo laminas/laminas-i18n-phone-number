@@ -43,7 +43,7 @@ final class PhoneNumberFormat
                 $number,
                 $this->coalesceCountryCode($countryCodeOrLocale)->toString()
             );
-        } catch (ExceptionInterface $error) {
+        } catch (ExceptionInterface) {
             return null;
         }
     }
