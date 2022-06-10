@@ -10,11 +10,9 @@ use Laminas\I18n\PhoneNumber\PhoneNumberValue;
 
 final class PhoneNumberFormat
 {
-    private CountryCode $country;
-
-    public function __construct(CountryCode $defaultCountryCode)
-    {
-        $this->country = $defaultCountryCode;
+    public function __construct(
+        private readonly CountryCode $defaultCountryCode
+    ) {
     }
 
     public function __invoke(): self
@@ -27,16 +25,16 @@ final class PhoneNumberFormat
      */
     private function coalesceCountryCode(?string $countryCodeOrLocale): CountryCode
     {
-        $countryCodeOrLocale = $countryCodeOrLocale ? CountryCode::tryFromString($countryCodeOrLocale) : null;
+        $code = $countryCodeOrLocale ? CountryCode::tryFromString($countryCodeOrLocale) : null;
 
-        return $countryCodeOrLocale ?: $this->country;
+        return $code ?? $this->defaultCountryCode;
     }
 
     /**
      * @param non-empty-string      $number
      * @param non-empty-string|null $countryCodeOrLocale
      */
-    public function toPhoneNumber(string $number, ?string $countryCodeOrLocale = null): ?PhoneNumberValue
+    public function tryToPhoneNumber(string $number, ?string $countryCodeOrLocale = null): ?PhoneNumberValue
     {
         try {
             return PhoneNumberValue::fromString(
@@ -54,7 +52,7 @@ final class PhoneNumberFormat
      */
     public function toE164(string $number, ?string $countryCodeOrLocale = null): string
     {
-        $phone = $this->toPhoneNumber($number, $countryCodeOrLocale);
+        $phone = $this->tryToPhoneNumber($number, $countryCodeOrLocale);
 
         return $phone ? $phone->toE164() : $number;
     }
@@ -65,7 +63,7 @@ final class PhoneNumberFormat
      */
     public function toNational(string $number, ?string $countryCodeOrLocale = null): string
     {
-        $phone = $this->toPhoneNumber($number, $countryCodeOrLocale);
+        $phone = $this->tryToPhoneNumber($number, $countryCodeOrLocale);
 
         return $phone ? $phone->toNational() : $number;
     }
@@ -76,7 +74,7 @@ final class PhoneNumberFormat
      */
     public function toInternational(string $number, ?string $countryCodeOrLocale = null): string
     {
-        $phone = $this->toPhoneNumber($number, $countryCodeOrLocale);
+        $phone = $this->tryToPhoneNumber($number, $countryCodeOrLocale);
 
         return $phone ? $phone->toInternational() : $number;
     }
@@ -87,7 +85,7 @@ final class PhoneNumberFormat
      */
     public function toRfc3966(string $number, ?string $countryCodeOrLocale = null): string
     {
-        $phone = $this->toPhoneNumber($number, $countryCodeOrLocale);
+        $phone = $this->tryToPhoneNumber($number, $countryCodeOrLocale);
 
         return $phone ? $phone->toRfc3966() : $number;
     }
