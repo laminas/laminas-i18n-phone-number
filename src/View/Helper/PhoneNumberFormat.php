@@ -34,7 +34,7 @@ final class PhoneNumberFormat
      * @param non-empty-string      $number
      * @param non-empty-string|null $countryCodeOrLocale
      */
-    public function tryToPhoneNumber(string $number, ?string $countryCodeOrLocale = null): ?PhoneNumberValue
+    private function tryToPhoneNumber(string $number, ?string $countryCodeOrLocale = null): ?PhoneNumberValue
     {
         try {
             return PhoneNumberValue::fromString(
