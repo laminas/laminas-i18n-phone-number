@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Laminas\I18n\PhoneNumber\Validator\Factory;
 
-use Laminas\I18n\PhoneNumber\Factory\ConfigurationTrait;
+use Laminas\I18n\PhoneNumber\Factory\Configuration;
 use Laminas\I18n\PhoneNumber\Validator\PhoneNumber;
 use Psr\Container\ContainerInterface;
 
@@ -15,15 +15,13 @@ use function array_merge;
  */
 final class PhoneNumberFactory
 {
-    use ConfigurationTrait;
-
     /** @param Options $options */
     public function __invoke(
         ContainerInterface $container,
         ?string $requestedName = null,
         array $options = []
     ): PhoneNumber {
-        $componentOptions = $this->componentConfig($container);
+        $componentOptions = Configuration::componentConfig($container);
 
         /** @psalm-var Options $resolvedOptions */
         $resolvedOptions = array_merge([
