@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Laminas\I18n\PhoneNumber\Test\Filter;
 
-use Laminas\I18n\PhoneNumber\CountryCode;
+use Laminas\I18n\CountryCode;
 use Laminas\I18n\PhoneNumber\Filter\AbstractFilter;
 use Laminas\I18n\PhoneNumber\Filter\ToE164;
 use Laminas\I18n\PhoneNumber\Filter\ToInternationalPhoneNumber;

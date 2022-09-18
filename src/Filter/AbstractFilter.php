@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Laminas\I18n\PhoneNumber\Filter;
 
 use Laminas\Filter\FilterInterface;
-use Laminas\I18n\PhoneNumber\CountryCode;
+use Laminas\I18n\CountryCode;
 use Laminas\I18n\PhoneNumber\Exception\ExceptionInterface;
 use Laminas\I18n\PhoneNumber\PhoneNumberValue;
 

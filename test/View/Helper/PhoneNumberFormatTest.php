@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Laminas\I18n\PhoneNumber\Test\View\Helper;
 
-use Laminas\I18n\PhoneNumber\CountryCode;
+use Laminas\I18n\CountryCode;
 use Laminas\I18n\PhoneNumber\View\Helper\PhoneNumberFormat;
 use PHPUnit\Framework\TestCase;
 

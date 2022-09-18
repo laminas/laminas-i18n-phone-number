@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Laminas\I18n\PhoneNumber\Factory;
 
+use Laminas\I18n\CountryCode;
 use Laminas\I18n\PhoneNumber\ConfigProvider;
-use Laminas\I18n\PhoneNumber\CountryCode;
 use Psr\Container\ContainerInterface;
 
 /**

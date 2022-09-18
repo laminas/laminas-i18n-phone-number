@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Laminas\I18n\PhoneNumber\Test\Factory;
 
-use Laminas\I18n\PhoneNumber\CountryCode;
+use Laminas\I18n\CountryCode;
 use Locale;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
