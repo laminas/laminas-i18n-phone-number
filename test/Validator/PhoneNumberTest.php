@@ -10,7 +10,6 @@ use Laminas\I18n\PhoneNumber\PhoneNumberValue;
 use Laminas\I18n\PhoneNumber\Test\NumberGeneratorTrait;
 use Laminas\I18n\PhoneNumber\Validator\PhoneNumber;
 use PHPUnit\Framework\TestCase;
-
 use Stringable;
 
 use const PHP_INT_MAX;
