@@ -93,4 +93,39 @@ class AbstractFilterTest extends TestCase
         $filtered = $filter->filter($object);
         self::assertIsString($filtered);
     }
+
+    /**
+     * @dataProvider filterClassProvider
+     * @param class-string<AbstractFilter> $class
+     */
+    public function testThatTheDefaultCountryCodeCanBeOverriddenBySettingOptionsAtRuntime(string $class): void
+    {
+        $filter = new $class(CountryCode::fromString('GB'));
+        $filter->setOptions(['country-code' => 'DE']);
+        $value = $filter->filter('(0)30-23125 000');
+        self::assertIsString($value);
+        $expect = [
+            'international' => '+49 30 23125000',
+            'E164'          => '+493023125000',
+            'national'      => '030 23125000',
+        ];
+        self::assertContains($value, $expect);
+    }
+
+    /**
+     * @dataProvider filterClassProvider
+     * @param class-string<AbstractFilter> $class
+     */
+    public function testThatTheDefaultCountryCodeCanBeOverriddenBySettingOptionsDuringConstruction(string $class): void
+    {
+        $filter = new $class(CountryCode::fromString('GB'), ['country-code' => 'DE']);
+        $value  = $filter->filter('(0)30-23125 000');
+        self::assertIsString($value);
+        $expect = [
+            'international' => '+49 30 23125000',
+            'E164'          => '+493023125000',
+            'national'      => '030 23125000',
+        ];
+        self::assertContains($value, $expect);
+    }
 }
