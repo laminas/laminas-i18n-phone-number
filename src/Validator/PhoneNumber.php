@@ -11,6 +11,7 @@ use Laminas\I18n\PhoneNumber\Exception\UnrecognizableNumberException;
 use Laminas\I18n\PhoneNumber\PhoneNumberValue;
 use Laminas\Stdlib\ArrayUtils;
 use Laminas\Validator\AbstractValidator;
+use Stringable;
 use Traversable;
 
 use function assert;
@@ -78,7 +79,7 @@ final class PhoneNumber extends AbstractValidator
     /** @param mixed $value */
     public function isValid($value): bool
     {
-        if (! is_scalar($value)) {
+        if (! is_scalar($value) && ! $value instanceof Stringable) {
             $this->error(self::INVALID_TYPE);
 
             return false;

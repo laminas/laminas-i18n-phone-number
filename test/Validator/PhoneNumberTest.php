@@ -11,6 +11,8 @@ use Laminas\I18n\PhoneNumber\Test\NumberGeneratorTrait;
 use Laminas\I18n\PhoneNumber\Validator\PhoneNumber;
 use PHPUnit\Framework\TestCase;
 
+use Stringable;
+
 use const PHP_INT_MAX;
 use const PHP_INT_MIN;
 
@@ -182,5 +184,26 @@ class PhoneNumberTest extends TestCase
         $options   = new ArrayObject(['country' => 'US', 'allowed_types' => PhoneNumberValue::TYPE_EMERGENCY]);
         $validator = new PhoneNumber($options);
         self::assertTrue($validator->isValid('911'));
+    }
+
+    public function testThatAStringableObjectWillBeConsideredForValidation(): void
+    {
+        $object = new class implements Stringable {
+            public function __toString(): string
+            {
+                return '01234567890';
+            }
+        };
+
+        $validator = new PhoneNumber();
+        $validator->setCountry('GB');
+        self::assertTrue($validator->isValid($object));
+
+        $validator = new PhoneNumber();
+        $validator->setCountry('US');
+        self::assertFalse($validator->isValid($object));
+        $messages = $validator->getMessages();
+        self::assertArrayHasKey(PhoneNumber::INVALID, $messages);
+        self::assertCount(1, $messages);
     }
 }

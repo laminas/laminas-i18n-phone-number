@@ -11,6 +11,7 @@ use Laminas\I18n\PhoneNumber\Filter\ToInternationalPhoneNumber;
 use Laminas\I18n\PhoneNumber\Filter\ToNationalPhoneNumber;
 use Laminas\I18n\PhoneNumber\PhoneNumberValue;
 use PHPUnit\Framework\TestCase;
+use Stringable;
 
 class AbstractFilterTest extends TestCase
 {
@@ -73,5 +74,23 @@ class AbstractFilterTest extends TestCase
         self::assertSame(1.5, $filter->filter(1.5));
         self::assertTrue($filter->filter(true));
         self::assertFalse($filter->filter(false));
+    }
+
+    /**
+     * @dataProvider filterClassProvider
+     * @param class-string<AbstractFilter> $class
+     */
+    public function testThatAStringableObjectWillConvertedToAStringForFiltering(string $class): void
+    {
+        $object = new class implements Stringable {
+            public function __toString(): string
+            {
+                return '01234 567 890';
+            }
+        };
+
+        $filter   = new $class(CountryCode::fromString('GB'));
+        $filtered = $filter->filter($object);
+        self::assertIsString($filtered);
     }
 }

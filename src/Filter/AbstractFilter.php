@@ -8,6 +8,7 @@ use Laminas\Filter\FilterInterface;
 use Laminas\I18n\CountryCode;
 use Laminas\I18n\PhoneNumber\Exception\ExceptionInterface;
 use Laminas\I18n\PhoneNumber\PhoneNumberValue;
+use Stringable;
 
 use function is_scalar;
 
@@ -25,7 +26,7 @@ abstract class AbstractFilter implements FilterInterface
             return $value;
         }
 
-        if (! is_scalar($value)) {
+        if (! is_scalar($value) && ! $value instanceof Stringable) {
             return null;
         }
 
