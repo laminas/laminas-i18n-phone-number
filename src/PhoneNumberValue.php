@@ -112,12 +112,14 @@ final class PhoneNumberValue
             throw InvalidPhoneNumberException::undetectableRegion($phoneNumber);
         }
 
+
+
         $isShortNumber = $short->isValidShortNumberForRegion($prototype, $regionCode)
             || $short->isValidShortNumber($prototype);
-        $isValidNumber = $util->isValidNumberForRegion($prototype, $regionCode)
+        $isValidNumber = $isShortNumber || $util->isValidNumberForRegion($prototype, $regionCode)
             || $util->isValidNumber($prototype);
 
-        if (! $isShortNumber && ! $isValidNumber) {
+        if (! $isValidNumber) {
             throw InvalidPhoneNumberException::with(
                 $phoneNumber,
                 $regionCode
