@@ -1,0 +1,75 @@
+{
+    "name": "laminas/laminas-i18n-phone-number",
+    "description": "Validate and format international phone numbers",
+    "license": "BSD-3-Clause",
+    "keywords": [
+        "laminas",
+        "i18n",
+        "libphonenumber",
+        "validation",
+        "phonenumber"
+    ],
+    "homepage": "https://getlaminas.org",
+    "support": {
+        "docs": "https://docs.laminas.dev/laminas-i18n/",
+        "issues": "https://github.com/laminas/laminas-i18n-phone-number/issues",
+        "source": "https://github.com/laminas/laminas-i18n-phone-number",
+        "rss": "https://github.com/laminas/laminas-i18n-phone-number/releases.atom",
+        "forum": "https://discourse.laminas.dev/"
+    },
+    "config": {
+        "sort-packages": true,
+        "platform": {
+            "php": "8.1.99"
+        },
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "composer/package-versions-deprecated": true
+        }
+    },
+    "extra": {
+        "laminas": {
+            "component": "Laminas\\I18n\\PhoneNumber",
+            "config-provider": "Laminas\\I18n\\PhoneNumber\\ConfigProvider"
+        }
+    },
+    "require": {
+        "php": "~8.1.0",
+        "ext-intl": "*",
+        "giggsey/libphonenumber-for-php": "^8.12.55",
+        "laminas/laminas-filter": "^2.18",
+        "laminas/laminas-i18n": "^2.18",
+        "laminas/laminas-stdlib": "^3.13",
+        "laminas/laminas-validator": "^2.24"
+    },
+    "require-dev": {
+        "laminas/laminas-coding-standard": "~2.4.0",
+        "laminas/laminas-servicemanager": "^3.17",
+        "phpunit/phpunit": "^9.5.25",
+        "psalm/plugin-phpunit": "^0.17",
+        "psr/container": "^1.1.2 || ^2",
+        "vimeo/psalm": "^4.27"
+    },
+    "autoload": {
+        "psr-4": {
+            "Laminas\\I18n\\PhoneNumber\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Laminas\\I18n\\PhoneNumber\\Test\\": "test/"
+        }
+    },
+    "scripts": {
+        "check": [
+            "@cs-check",
+            "@test",
+            "psalm"
+        ],
+        "cs-check": "phpcs",
+        "cs-fix": "phpcbf",
+        "static-analysis": "psalm --shepherd --stats",
+        "test": "phpunit --colors=always",
+        "test-coverage": "phpunit --colors=always --coverage-clover clover.xml"
+    }
+}
