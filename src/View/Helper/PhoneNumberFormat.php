@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Laminas\I18n\PhoneNumber\View\Helper;
 
 use Laminas\I18n\CountryCode;
-use Laminas\I18n\PhoneNumber\Exception\ExceptionInterface;
+use Laminas\I18n\PhoneNumber\Exception\InvalidPhoneNumberExceptionInterface;
 use Laminas\I18n\PhoneNumber\PhoneNumberValue;
 
 final class PhoneNumberFormat
@@ -41,7 +41,7 @@ final class PhoneNumberFormat
                 $number,
                 $this->coalesceCountryCode($countryCodeOrLocale)->toString()
             );
-        } catch (ExceptionInterface) {
+        } catch (InvalidPhoneNumberExceptionInterface) {
             return null;
         }
     }

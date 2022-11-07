@@ -6,7 +6,7 @@ namespace Laminas\I18n\PhoneNumber\Validator;
 
 use Laminas\I18n\CountryCode;
 use Laminas\I18n\PhoneNumber\Exception\InvalidOptionException;
-use Laminas\I18n\PhoneNumber\Exception\InvalidPhoneNumberException;
+use Laminas\I18n\PhoneNumber\Exception\InvalidPhoneNumberExceptionInterface;
 use Laminas\I18n\PhoneNumber\Exception\UnrecognizableNumberException;
 use Laminas\I18n\PhoneNumber\PhoneNumberValue;
 use Laminas\Stdlib\ArrayUtils;
@@ -101,7 +101,7 @@ final class PhoneNumber extends AbstractValidator
             $this->error(self::NO_MATCH);
 
             return false;
-        } catch (InvalidPhoneNumberException) {
+        } catch (InvalidPhoneNumberExceptionInterface) {
             $this->error(self::INVALID);
 
             return false;

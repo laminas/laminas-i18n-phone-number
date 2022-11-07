@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace Laminas\I18n\PhoneNumber;
 
-use Laminas\I18n\PhoneNumber\Exception\InvalidPhoneNumberException;
+use Laminas\I18n\PhoneNumber\Exception\InvalidPhoneNumberForRegionException;
+use Laminas\I18n\PhoneNumber\Exception\UndetectablePhoneNumberRegionException;
 use Laminas\I18n\PhoneNumber\Exception\UnrecognizableNumberException;
 use libphonenumber\NumberParseException;
 use libphonenumber\PhoneNumber as LibPhoneNumber;
@@ -94,7 +95,7 @@ final class PhoneNumberValue
      * @param non-empty-string      $phoneNumber
      * @param non-empty-string|null $countryCode
      * @throws UnrecognizableNumberException If it is impossible to parse the given string.
-     * @throws InvalidPhoneNumberException If the phone number is invalid for the given or detected region.
+     * @throws InvalidPhoneNumberForRegionException If the phone number is invalid for the given or detected region.
      * @return static
      */
     public static function fromString(string $phoneNumber, ?string $countryCode = null): self
@@ -109,7 +110,7 @@ final class PhoneNumberValue
         $short      = ShortNumberInfo::getInstance();
         $regionCode = self::regionCodeForNumber($prototype, $countryCode);
         if ($regionCode === null) {
-            throw InvalidPhoneNumberException::undetectableRegion($phoneNumber);
+            throw UndetectablePhoneNumberRegionException::new($phoneNumber);
         }
 
         $isShortNumber = $short->isValidShortNumberForRegion($prototype, $regionCode)
@@ -118,10 +119,7 @@ final class PhoneNumberValue
             || $util->isValidNumber($prototype);
 
         if (! $isValidNumber) {
-            throw InvalidPhoneNumberException::with(
-                $phoneNumber,
-                $regionCode
-            );
+            throw InvalidPhoneNumberForRegionException::new($phoneNumber, $regionCode);
         }
 
         return new self(

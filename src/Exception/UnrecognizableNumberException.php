@@ -9,7 +9,8 @@ use Throwable;
 
 use function sprintf;
 
-final class UnrecognizableNumberException extends InvalidArgumentException implements ExceptionInterface
+/** @phpcs:disable Generic.Files.LineLength.TooLong */
+final class UnrecognizableNumberException extends InvalidArgumentException implements InvalidPhoneNumberExceptionInterface
 {
     /** @psalm-pure */
     public static function withString(string $number, ?Throwable $previous = null): self

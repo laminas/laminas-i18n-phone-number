@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Laminas\I18n\PhoneNumber\Test;
 
 use Laminas\I18n\PhoneNumber\Exception\ExceptionInterface;
-use Laminas\I18n\PhoneNumber\Exception\InvalidPhoneNumberException;
+use Laminas\I18n\PhoneNumber\Exception\InvalidPhoneNumberForRegionException;
 use Laminas\I18n\PhoneNumber\Exception\UnrecognizableNumberException;
 use Laminas\I18n\PhoneNumber\PhoneNumberValue;
 use PHPUnit\Framework\TestCase;
@@ -35,7 +35,7 @@ class PhoneNumberValueTest extends TestCase
 
     public function testAnExceptionIsThrownForANationalNumberWithTheWrongCountry(): void
     {
-        $this->expectException(InvalidPhoneNumberException::class);
+        $this->expectException(InvalidPhoneNumberForRegionException::class);
         PhoneNumberValue::fromString('01392 234 567', 'US');
     }
 

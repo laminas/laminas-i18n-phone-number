@@ -6,7 +6,7 @@ namespace Laminas\I18n\PhoneNumber\Filter;
 
 use Laminas\Filter\FilterInterface;
 use Laminas\I18n\CountryCode;
-use Laminas\I18n\PhoneNumber\Exception\ExceptionInterface;
+use Laminas\I18n\PhoneNumber\Exception\InvalidPhoneNumberExceptionInterface;
 use Laminas\I18n\PhoneNumber\PhoneNumberValue;
 use Stringable;
 
@@ -37,7 +37,7 @@ abstract class AbstractFilter implements FilterInterface
 
         try {
             return PhoneNumberValue::fromString($input, $this->countryCode->toString());
-        } catch (ExceptionInterface) {
+        } catch (InvalidPhoneNumberExceptionInterface) {
             return null;
         }
     }
