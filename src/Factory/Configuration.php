@@ -12,8 +12,12 @@ use Psr\Container\ContainerInterface;
  * @psalm-import-type PackageConfig from ConfigProvider
  * @psalm-internal \Laminas\I18n\PhoneNumber
  */
-abstract class Configuration // phpcs:ignore
+final class Configuration
 {
+    private function __construct()
+    {
+    }
+
     public static function defaultCountryCode(ContainerInterface $container): CountryCode
     {
         $options = self::componentConfig($container);
