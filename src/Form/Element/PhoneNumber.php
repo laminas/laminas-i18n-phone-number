@@ -7,7 +7,7 @@ namespace Laminas\I18n\PhoneNumber\Form\Element;
 use Laminas\Form\Element;
 use Laminas\I18n\CountryCode;
 use Laminas\I18n\PhoneNumber\PhoneNumberValue;
-use Laminas\I18n\PhoneNumber\Validator\PhoneNumber as NumberValidator;
+use Laminas\I18n\PhoneNumber\Validator\PhoneNumber as PhoneNumberValidator;
 use Laminas\InputFilter\InputFilterInterface;
 use Laminas\InputFilter\InputProviderInterface;
 use Laminas\Stdlib\ArrayUtils;
@@ -98,7 +98,7 @@ final class PhoneNumber extends Element implements InputProviderInterface
             'required'   => true,
             'validators' => [
                 [
-                    'name'    => NumberValidator::class,
+                    'name'    => PhoneNumberValidator::class,
                     'options' => [
                         'country_context' => $this->countryContext,
                         'country'         => $this->defaultCountry?->toString(),
