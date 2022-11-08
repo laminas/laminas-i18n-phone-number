@@ -206,11 +206,12 @@ class PhoneNumberTest extends TestCase
         self::assertCount(1, $messages);
     }
 
-    public function testOptionsCanHaveNullValues(): void
+    public function testAllOptionsCanHaveNullValues(): void
     {
         new PhoneNumber([
-            'country'       => null,
-            'allowed_types' => null,
+            'country'         => null,
+            'allowed_types'   => null,
+            'country_context' => null,
         ]);
         self::assertTrue(true);
     }
@@ -219,5 +220,22 @@ class PhoneNumberTest extends TestCase
     {
         new PhoneNumber(null);
         self::assertTrue(true);
+    }
+
+    public function testThatCountryContextIsConsidered(): void
+    {
+        $input   = '01234 567 890';
+        $context = [
+            'number'   => $input,
+            'my-field' => 'GB',
+        ];
+
+        $validator = new PhoneNumber();
+        self::assertFalse($validator->isValid($input, $context));
+
+        $validator = new PhoneNumber([
+            'country_context' => 'my-field',
+        ]);
+        self::assertTrue($validator->isValid($input, $context));
     }
 }

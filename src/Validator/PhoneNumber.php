@@ -22,8 +22,9 @@ use function sprintf;
 
 /**
  * @psalm-type Options = array{
- *     country?: non-empty-string,
- *     allowed_types?: int,
+ *     country?: non-empty-string|null,
+ *     country_context?: non-empty-string|null,
+ *     allowed_types?: int|null,
  * }
  */
 final class PhoneNumber extends AbstractValidator
@@ -56,6 +57,17 @@ final class PhoneNumber extends AbstractValidator
      */
     private int $allowTypes = PhoneNumberValue::TYPE_ANY;
 
+    /**
+     * Input name to check for an ISO 3166 Country Code during validation
+     *
+     * If non-empty, the validation context will be searched for the value corresponding to the given key. When found,
+     * and when the value is a valid country code, the given phone number will be validated as a number for the country
+     * determined by this value.
+     *
+     * @var non-empty-string|null
+     */
+    private ?string $countryContext = null;
+
     /** @param Options|Traversable<string, mixed>|null $options */
     public function __construct($options = null)
     {
@@ -73,6 +85,14 @@ final class PhoneNumber extends AbstractValidator
             $this->setCountry($options['country']);
         }
 
+        if (
+            isset($options['country_context'])
+            && is_string($options['country_context'])
+            && $options['country_context'] !== ''
+        ) {
+            $this->setCountryContext($options['country_context']);
+        }
+
         if (isset($options['allowed_types']) && is_int($options['allowed_types'])) {
             $this->setAllowedTypes($options['allowed_types']);
         }
@@ -82,8 +102,11 @@ final class PhoneNumber extends AbstractValidator
         parent::__construct($options);
     }
 
-    /** @param mixed $value */
-    public function isValid($value): bool
+    /**
+     * @param mixed $value
+     * @param array<string, mixed> $context
+     */
+    public function isValid($value, ?array $context = null): bool
     {
         if (! is_scalar($value) && ! $value instanceof Stringable) {
             $this->error(self::INVALID_TYPE);
@@ -101,8 +124,10 @@ final class PhoneNumber extends AbstractValidator
             return false;
         }
 
+        $country = $this->resolveCountry($context);
+
         try {
-            $number = PhoneNumberValue::fromString($value, $this->country?->toString());
+            $number = PhoneNumberValue::fromString($value, $country?->toString());
         } catch (UnrecognizableNumberException) {
             $this->error(self::NO_MATCH);
 
@@ -138,6 +163,12 @@ final class PhoneNumber extends AbstractValidator
         $this->country = $code;
     }
 
+    /** @param non-empty-string $inputName */
+    public function setCountryContext(string $inputName): void
+    {
+        $this->countryContext = $inputName;
+    }
+
     public function setAllowedTypes(int $types): void
     {
         if ($types <= 0 || ($types & PhoneNumberValue::TYPE_KNOWN) !== $types) {
@@ -145,5 +176,20 @@ final class PhoneNumber extends AbstractValidator
         }
 
         $this->allowTypes = $types;
+    }
+
+    /** @param array<string, mixed> $validationContext */
+    private function resolveCountry(?array $validationContext): ?CountryCode
+    {
+        if (! is_array($validationContext) || ! $this->countryContext) {
+            return $this->country;
+        }
+
+        $code = $validationContext[$this->countryContext] ?? null;
+        if (! is_string($code) || $code === '') {
+            return $this->country;
+        }
+
+        return CountryCode::tryFromString($code) ?? $this->country;
     }
 }
