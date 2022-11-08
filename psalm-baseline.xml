@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-The baseline is empty because there's 100% type coverage. The empty file persists so that it can be tracked
-over time in VCS in case future coverage drops with a compelling reason to baseline an issue.
--->
-<files psalm-version="4.21.0@d8bec4c7aaee111a532daec32fb09de5687053d1"/>
+<files psalm-version="4.30.0@d0bc6e25d89f649e4f36a534f330f8bb4643dd69">
+  <file src="src/Validator/PhoneNumber.php">
+    <PossiblyInvalidArgument occurrences="1">
+      <code>$options</code>
+    </PossiblyInvalidArgument>
+  </file>
+</files>
