@@ -215,4 +215,25 @@ final class FormIntegrationTest extends ProjectIntegrationTestCase
         $form->setData(['number' => '031-3900600']);
         self::assertTrue($form->isValid());
     }
+
+    public function testAllowableTypesAsAConstructorOptionCanBeUsedToLimitValidNumberTypes(): void
+    {
+        $element = $this->formElements->build(
+            PhoneNumber::class,
+            [
+                'allowed_types'   => PhoneNumberValue::TYPE_EMERGENCY,
+                'default_country' => 'GB',
+            ],
+        );
+
+        $form = $this->formElements->get(Form::class);
+        assert($form instanceof Form);
+        $form->add($element, ['name' => 'num']);
+
+        $form->setData(['num' => '999']);
+        self::assertTrue($form->isValid());
+
+        $form->setData(['num' => '911']);
+        self::assertFalse($form->isValid());
+    }
 }

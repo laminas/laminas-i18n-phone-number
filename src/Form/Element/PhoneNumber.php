@@ -102,7 +102,7 @@ final class PhoneNumber extends Element implements InputProviderInterface
                     'options' => [
                         'country_context' => $this->countryContext,
                         'country'         => $this->defaultCountry?->toString(),
-                        'allowed_type'    => $this->allowedTypes,
+                        'allowed_types'   => $this->allowedTypes,
                     ],
                 ],
             ],
