@@ -38,12 +38,15 @@
         "ext-intl": "*",
         "giggsey/libphonenumber-for-php": "^8.13",
         "laminas/laminas-filter": "^2.27",
+        "laminas/laminas-form": "^3.5",
         "laminas/laminas-i18n": "^2.19",
+        "laminas/laminas-inputfilter": "^2.22",
         "laminas/laminas-stdlib": "^3.15",
         "laminas/laminas-validator": "^2.26"
     },
     "require-dev": {
         "laminas/laminas-coding-standard": "~2.4.0",
+        "laminas/laminas-config-aggregator": "^1.11",
         "laminas/laminas-servicemanager": "^3.19",
         "phpunit/phpunit": "^9.5.26",
         "psalm/plugin-phpunit": "^0.18.3",
