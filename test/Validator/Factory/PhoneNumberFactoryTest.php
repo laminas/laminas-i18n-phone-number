@@ -54,4 +54,10 @@ class PhoneNumberFactoryTest extends TestCase
         self::assertFalse($validator->isValid('+4401234567890'));
         self::assertTrue($validator->isValid('999'));
     }
+
+    public function testThatValidatorOptionsCanBeNull(): void
+    {
+        ($this->factory)($this->container);
+        self::assertTrue(true);
+    }
 }

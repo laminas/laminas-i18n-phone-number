@@ -205,4 +205,19 @@ class PhoneNumberTest extends TestCase
         self::assertArrayHasKey(PhoneNumber::INVALID, $messages);
         self::assertCount(1, $messages);
     }
+
+    public function testOptionsCanHaveNullValues(): void
+    {
+        new PhoneNumber([
+            'country'       => null,
+            'allowed_types' => null,
+        ]);
+        self::assertTrue(true);
+    }
+
+    public function testOptionsCanBeNull(): void
+    {
+        new PhoneNumber(null);
+        self::assertTrue(true);
+    }
 }

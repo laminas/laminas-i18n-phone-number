@@ -14,7 +14,7 @@ use Laminas\Validator\AbstractValidator;
 use Stringable;
 use Traversable;
 
-use function assert;
+use function is_array;
 use function is_int;
 use function is_scalar;
 use function is_string;
@@ -63,15 +63,21 @@ final class PhoneNumber extends AbstractValidator
             $options = ArrayUtils::iteratorToArray($options);
         }
 
-        if (isset($options['country'])) {
-            assert(is_string($options['country']) && $options['country'] !== '');
+        if (! is_array($options)) {
+            parent::__construct();
+
+            return;
+        }
+
+        if (isset($options['country']) && is_string($options['country']) && $options['country'] !== '') {
             $this->setCountry($options['country']);
         }
 
-        if (isset($options['allowed_types'])) {
-            assert(is_int($options['allowed_types']));
+        if (isset($options['allowed_types']) && is_int($options['allowed_types'])) {
             $this->setAllowedTypes($options['allowed_types']);
         }
+
+        unset($options['country'], $options['allowed_types']);
 
         parent::__construct($options);
     }
