@@ -38,6 +38,7 @@ final class ConfigProvider
             'filters'                   => $this->filterConfiguration(),
             'validators'                => $this->validatorConfiguration(),
             'view_helpers'              => $this->viewHelperConfiguration(),
+            'form_elements'             => $this->formElementConfiguration(),
         ];
     }
 
@@ -86,6 +87,18 @@ final class ConfigProvider
             ],
             'aliases'   => [
                 'phoneNumberFormat' => View\Helper\PhoneNumberFormat::class,
+            ],
+        ];
+    }
+
+    /**
+     * @return ServiceManagerConfigurationType
+     */
+    private function formElementConfiguration(): array
+    {
+        return [
+            'factories' => [
+                Form\Element\PhoneNumber::class => Form\Element\Factory\PhoneNumberFactory::class,
             ],
         ];
     }

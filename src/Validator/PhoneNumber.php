@@ -24,7 +24,7 @@ use function sprintf;
  * @psalm-type Options = array{
  *     country?: non-empty-string|null,
  *     country_context?: non-empty-string|null,
- *     allowed_types?: int|null,
+ *     allowed_types?: int-mask-of<PhoneNumberValue::TYPE_*>|null,
  * }
  */
 final class PhoneNumber extends AbstractValidator
@@ -54,6 +54,8 @@ final class PhoneNumber extends AbstractValidator
      * Validate for specific types of phone number
      *
      * Restrict otherwise valid types of phone numbers to a subset of allowed types.
+     *
+     * @var int-mask-of<PhoneNumberValue::TYPE_*>
      */
     private int $allowTypes = PhoneNumberValue::TYPE_ANY;
 
@@ -169,6 +171,7 @@ final class PhoneNumber extends AbstractValidator
         $this->countryContext = $inputName;
     }
 
+    /** @param int-mask-of<PhoneNumberValue::TYPE_*> $types */
     public function setAllowedTypes(int $types): void
     {
         if ($types <= 0 || ($types & PhoneNumberValue::TYPE_KNOWN) !== $types) {
