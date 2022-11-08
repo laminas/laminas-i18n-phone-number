@@ -236,4 +236,24 @@ final class FormIntegrationTest extends ProjectIntegrationTestCase
         $form->setData(['num' => '911']);
         self::assertFalse($form->isValid());
     }
+
+    public function testThatPhoneNumbersAreTrimmedByDefault(): void
+    {
+        $this->form->add([
+            'name'    => 'number',
+            'type'    => PhoneNumber::class,
+            'options' => [
+                'default_country' => 'US',
+                'allowed_types'   => PhoneNumberValue::TYPE_EMERGENCY,
+            ],
+        ]);
+        $this->form->setData([
+            'number' => '  911  ',
+        ]);
+
+        self::assertTrue($this->form->isValid());
+        self::assertEquals([
+            'number' => '911',
+        ], $this->form->getData());
+    }
 }
