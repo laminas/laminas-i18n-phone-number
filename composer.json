@@ -48,6 +48,7 @@
         "laminas/laminas-coding-standard": "~2.4.0",
         "laminas/laminas-config-aggregator": "^1.11",
         "laminas/laminas-servicemanager": "^3.19",
+        "maglnet/composer-require-checker": "^4.2",
         "phpunit/phpunit": "^9.5.26",
         "psalm/plugin-phpunit": "^0.18.3",
         "psr/container": "^1.1.2 || ^2",

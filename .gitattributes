@@ -9,3 +9,4 @@
 /psalm-baseline.xml export-ignore
 /renovate.json
 /test/ export-ignore
+/composer-require-checker.json export-ignore
