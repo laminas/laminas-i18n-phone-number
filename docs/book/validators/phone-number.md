@@ -6,11 +6,8 @@ Phone number formats are country specific.
 ## Basic Usage
 
 ```php
-use Laminas\I18n\PhoneNumber\Validator\PhoneNumber;
-
-$validator = new PhoneNumber();
+$validator = new Laminas\I18n\PhoneNumber\Validator\PhoneNumber();
 $validator->isValid('+4930123456'); // true
-```
 
 When the validator receives a phone number in a recognizable international format, including the leading country dialing code, it will determine validity based on rules specific to the corresponding country.
 
@@ -62,11 +59,10 @@ The validator is capable of validating a range of number types; mobile numbers, 
 By default, the validator will accept any number type:
 
 ```php
-$validator = new PhoneNumber([
+$validator = new Laminas\I18n\PhoneNumber\Validator\PhoneNumber([
     'country' => 'US',
 ]);
 $validator->isValid('911'); // true
-```
 
 In order to reduce the range of acceptable number types, provide the validator with a bitmask of types from `PhoneNumberValue` value object:
 
@@ -120,7 +116,12 @@ $options = [
 ];
 
 $validator = new PhoneNumber($options);
-// Options can also be changed at runtime with:
+```
+
+Options can also be changed at runtime with:
+
+```php
+$validator = new Laminas\I18n\PhoneNumber\Validator\PhoneNumber();
 $validator->setOptions($options);
 ```
 
@@ -128,16 +129,32 @@ $validator->setOptions($options);
 
 Each of the 3 options have companion "setters" to change the runtime behaviour of the validator after it has been constructed:
 
+### Set Country Code
+
 ```php
-use Laminas\I18n\PhoneNumber\PhoneNumberValue;
-use Laminas\I18n\PhoneNumber\Validator\PhoneNumber;
+$validator = new Laminas\I18n\PhoneNumber\Validator\PhoneNumber();
+$validator->setCountry('US');
+```
 
-$validator = new PhoneNumber();
+A locale string can also be used to set the country.
 
-$validator->setCountry('US'); // Set the default country to US
-$validator->setCountry('de_DE'); // A locale string can also be used to set the country
+```php
+$validator = new Laminas\I18n\PhoneNumber\Validator\PhoneNumber();
+$validator->setCountry('de_DE');
+```
 
-$validator->setCountryContext('my-country-input'); // Set the country validation context key
+### Set the Country Validation Context Key
 
-$validator->setAllowedTypes(PhoneNumberValue::TYPE_VOIP); // Set the acceptable number types
+```php
+$validator = new Laminas\I18n\PhoneNumber\Validator\PhoneNumber();
+$validator->setCountryContext('my-country-input');
+```
+
+### Set the Acceptable Number Types
+
+```php
+$validator = new Laminas\I18n\PhoneNumber\Validator\PhoneNumber();
+$validator->setAllowedTypes(
+    Laminas\I18n\PhoneNumber\PhoneNumberValue::TYPE_VOIP
+);
 ```
