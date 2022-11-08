@@ -26,7 +26,7 @@ $filter  = new ToNationalPhoneNumber($country);
 echo $filter->filter('+441234567890'); // "01234 567890"
 ```
 
-## Changing the default country code
+## Changing the Default Country Code
 
 Given an already instantiated filter instance, the country code can be changed in 2 ways:
 
@@ -57,7 +57,7 @@ $options = [
 $filter->setOptions($options);
 ```
 
-## Filtering invalid data
+## Filtering Invalid Data
 
 When the filter receives values that cannot be recognised as valid phone numbers, the original input is returned as-is.
 
