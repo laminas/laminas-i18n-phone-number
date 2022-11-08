@@ -19,7 +19,7 @@ final class PhoneNumberFactory
     public function __invoke(
         ContainerInterface $container,
         ?string $requestedName = null,
-        array $options = []
+        ?array $options = null
     ): PhoneNumber {
         $componentOptions = Configuration::componentConfig($container);
 
@@ -27,7 +27,7 @@ final class PhoneNumberFactory
         $resolvedOptions = array_merge([
             'country'       => $componentOptions['default-country-code'] ?? null,
             'allowed_types' => $componentOptions['acceptable-number-types'] ?? null,
-        ], $options);
+        ], $options ?? []);
 
         return new PhoneNumber($resolvedOptions);
     }
