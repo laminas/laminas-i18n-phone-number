@@ -238,4 +238,31 @@ class PhoneNumberTest extends TestCase
         ]);
         self::assertTrue($validator->isValid($input, $context));
     }
+
+    public function testRuntimeSetOptionsWithEmptyValuesDoNotCauseTypeErrors(): void
+    {
+        $validator = new PhoneNumber();
+        $validator->setOptions([
+            'country'         => null,
+            'allowed_types'   => null,
+            'country_context' => null,
+        ]);
+        self::assertTrue($validator->isValid('+441234567890'));
+    }
+
+    public function testRuntimeSetOptionsAreApplied(): void
+    {
+        $validator = new PhoneNumber([
+            'allowed_types' => PhoneNumberValue::TYPE_MOBILE,
+            'country'       => 'GB',
+        ]);
+
+        self::assertFalse($validator->isValid('999'));
+
+        $validator->setOptions([
+            'allowed_types' => PhoneNumberValue::TYPE_EMERGENCY,
+        ]);
+
+        self::assertTrue($validator->isValid('999'));
+    }
 }

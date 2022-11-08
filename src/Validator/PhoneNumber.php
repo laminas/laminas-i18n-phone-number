@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Laminas\I18n\PhoneNumber\Validator;
 
+use Laminas\Form\Annotation\Options;
 use Laminas\I18n\CountryCode;
 use Laminas\I18n\PhoneNumber\Exception\InvalidOptionException;
 use Laminas\I18n\PhoneNumber\Exception\InvalidPhoneNumberExceptionInterface;
@@ -25,7 +26,7 @@ use function sprintf;
  *     country?: non-empty-string|null,
  *     country_context?: non-empty-string|null,
  *     allowed_types?: int-mask-of<PhoneNumberValue::TYPE_*>|null,
- * }
+ * }&array<string, mixed>
  */
 final class PhoneNumber extends AbstractValidator
 {
@@ -70,17 +71,20 @@ final class PhoneNumber extends AbstractValidator
      */
     private ?string $countryContext = null;
 
-    /** @param Options|Traversable<string, mixed>|null $options */
+    /** @param Options|iterable<string, mixed>|null $options */
     public function __construct($options = null)
+    {
+        parent::__construct($options);
+    }
+
+    /**
+     * @param Options|iterable<string, mixed> $options
+     * @return $this
+     */
+    public function setOptions($options = []): self
     {
         if ($options instanceof Traversable) {
             $options = ArrayUtils::iteratorToArray($options);
-        }
-
-        if (! is_array($options)) {
-            parent::__construct();
-
-            return;
         }
 
         if (isset($options['country']) && is_string($options['country']) && $options['country'] !== '') {
@@ -99,9 +103,11 @@ final class PhoneNumber extends AbstractValidator
             $this->setAllowedTypes($options['allowed_types']);
         }
 
-        unset($options['country'], $options['allowed_types']);
+        unset($options['country'], $options['country_context'], $options['allowed_types']);
 
-        parent::__construct($options);
+        parent::setOptions($options);
+
+        return $this;
     }
 
     /**
