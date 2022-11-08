@@ -34,21 +34,21 @@
         }
     },
     "require": {
-        "php": "~8.1.0",
+        "php": "~8.1.0 || ~8.2.0",
         "ext-intl": "*",
-        "giggsey/libphonenumber-for-php": "^8.12.55",
-        "laminas/laminas-filter": "^2.18",
-        "laminas/laminas-i18n": "^2.18",
-        "laminas/laminas-stdlib": "^3.13",
-        "laminas/laminas-validator": "^2.24"
+        "giggsey/libphonenumber-for-php": "^8.13",
+        "laminas/laminas-filter": "^2.27",
+        "laminas/laminas-i18n": "^2.19",
+        "laminas/laminas-stdlib": "^3.15",
+        "laminas/laminas-validator": "^2.26"
     },
     "require-dev": {
         "laminas/laminas-coding-standard": "~2.4.0",
-        "laminas/laminas-servicemanager": "^3.17",
-        "phpunit/phpunit": "^9.5.25",
-        "psalm/plugin-phpunit": "^0.18",
+        "laminas/laminas-servicemanager": "^3.19",
+        "phpunit/phpunit": "^9.5.26",
+        "psalm/plugin-phpunit": "^0.18.3",
         "psr/container": "^1.1.2 || ^2",
-        "vimeo/psalm": "^4.27"
+        "vimeo/psalm": "^4.30"
     },
     "autoload": {
         "psr-4": {
