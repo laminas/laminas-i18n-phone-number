@@ -212,16 +212,16 @@
         },
         {
             "name": "laminas/laminas-form",
-            "version": "3.5.1",
+            "version": "3.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-form.git",
-                "reference": "1563142cbf35972106e3404d4dd5cfdd48856b51"
+                "reference": "e6d71e87d31f583aafe3644a7680de72d1f81ea5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laminas/laminas-form/zipball/1563142cbf35972106e3404d4dd5cfdd48856b51",
-                "reference": "1563142cbf35972106e3404d4dd5cfdd48856b51",
+                "url": "https://api.github.com/repos/laminas/laminas-form/zipball/e6d71e87d31f583aafe3644a7680de72d1f81ea5",
+                "reference": "e6d71e87d31f583aafe3644a7680de72d1f81ea5",
                 "shasum": ""
             },
             "require": {
@@ -249,7 +249,7 @@
                 "laminas/laminas-eventmanager": "^3.6",
                 "laminas/laminas-filter": "^2.23",
                 "laminas/laminas-i18n": "^2.19",
-                "laminas/laminas-modulemanager": "^2.12",
+                "laminas/laminas-modulemanager": "^2.14.0",
                 "laminas/laminas-recaptcha": "^3.4.0",
                 "laminas/laminas-servicemanager": "^3.19",
                 "laminas/laminas-session": "^2.13",
@@ -257,7 +257,7 @@
                 "laminas/laminas-validator": "^2.26",
                 "laminas/laminas-view": "^2.24",
                 "phpunit/phpunit": "^9.5.25",
-                "psalm/plugin-phpunit": "^0.17.0",
+                "psalm/plugin-phpunit": "^0.18.0",
                 "vimeo/psalm": "^4.29"
             },
             "suggest": {
@@ -305,7 +305,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2022-10-29T12:30:17+00:00"
+            "time": "2022-11-20T22:16:51+00:00"
         },
         {
             "name": "laminas/laminas-hydrator",
