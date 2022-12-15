@@ -2,6 +2,8 @@
 
 The `ToNationalPhoneNumber` filter can be used to format phone numbers to the national format expected by the region the phone number belongs to.  
 
+--8<-- "installation-requirements.md"
+
 ## Basic Usage
 
 ```php

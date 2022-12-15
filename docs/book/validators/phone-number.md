@@ -3,11 +3,14 @@
 `Laminas\I18n\PhoneNumber\Validator\PhoneNumber` allows you to determine if a given value **is a valid phone number**.
 Phone number formats are country specific.
 
+--8<-- "installation-requirements.md"
+
 ## Basic Usage
 
 ```php
 $validator = new Laminas\I18n\PhoneNumber\Validator\PhoneNumber();
 $validator->isValid('+4930123456'); // true
+```
 
 When the validator receives a phone number in a recognizable international format, including the leading country dialing code, it will determine validity based on rules specific to the corresponding country.
 
@@ -63,6 +66,7 @@ $validator = new Laminas\I18n\PhoneNumber\Validator\PhoneNumber([
     'country' => 'US',
 ]);
 $validator->isValid('911'); // true
+```
 
 In order to reduce the range of acceptable number types, provide the validator with a bitmask of types from `PhoneNumberValue` value object:
 
