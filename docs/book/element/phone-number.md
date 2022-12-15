@@ -2,6 +2,8 @@
 
 `Laminas\I18n\PhoneNumber\Form\Element\PhoneNumber` is a text input form element that automatically attaches a PhoneNumber validator.
 
+--8<-- "installation-requirements.md"
+
 ## Basic Usage
 
 This element automatically adds a `type` attribute of value `tel`.
