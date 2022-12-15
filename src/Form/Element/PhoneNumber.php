@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Laminas\I18n\PhoneNumber\Form\Element;
 
+use Laminas\Filter\StringTrim;
 use Laminas\Form\Element;
 use Laminas\I18n\CountryCode;
 use Laminas\I18n\PhoneNumber\PhoneNumberValue;
@@ -28,7 +29,7 @@ final class PhoneNumber extends Element implements InputProviderInterface
 {
     /** @inheritDoc */
     protected $attributes = [
-        'type' => 'text',
+        'type' => 'tel',
     ];
 
     /**
@@ -96,6 +97,9 @@ final class PhoneNumber extends Element implements InputProviderInterface
         return [
             'name'       => (string) $this->getName(),
             'required'   => true,
+            'filters'    => [
+                ['name' => StringTrim::class],
+            ],
             'validators' => [
                 [
                     'name'    => PhoneNumberValidator::class,
