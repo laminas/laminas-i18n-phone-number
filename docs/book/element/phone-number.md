@@ -96,9 +96,9 @@ available.
 Set options for an element of type `PhoneNumber`.
 The accepted options, in addition to the inherited options of [`Laminas\Form\Element`](https://docs.laminas.dev/laminas-form/v3/element/element/) are:
 
-- `default_country`, which calls `setDefaultCountry()` 
+- `default_country`, which calls `setDefaultCountry()`
 - `country_context`, which calls `setCountryContext()`
-- `allowed_types`, which calls `setAllowedTypes()`.
+- `allowed_types`, which calls `setAllowedTypes()`
 
 ```php
 $element->setOptions([
