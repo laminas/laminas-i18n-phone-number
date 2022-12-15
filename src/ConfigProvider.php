@@ -26,7 +26,7 @@ final class ConfigProvider
      *     filters: ServiceManagerConfigurationType,
      *     validators: ServiceManagerConfigurationType,
      *     view_helpers: ServiceManagerConfigurationType,
-     *     ...
+     *     form_elements: ServiceManagerConfigurationType,
      * }
      */
     public function __invoke(): array

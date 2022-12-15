@@ -22,7 +22,7 @@ final class Module
      *     filters: ServiceManagerConfigurationType,
      *     validators: ServiceManagerConfigurationType,
      *     view_helpers: ServiceManagerConfigurationType,
-     *     ...
+     *     form_elements: ServiceManagerConfigurationType,
      * }
      */
     public function getConfig(): array
