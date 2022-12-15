@@ -91,11 +91,6 @@ The following methods are specific to the `PhoneNumber` element; all other metho
 defined by the [parent `Element` class](https://docs.laminas.dev/laminas-form/v3/element/element/#public-methods) are also
 available.
 
-### `getInputSpecification(): array`
-
-Returns an [input filter specification](https://docs.laminas.dev/laminas-inputfilter/specs/), which includes the `StringTrim` filter, and a phone number validator configured with the `default_country`, `country_context`, and `allowed_types` options.
-The validator options are described in greater detail in the documentation for the [phone number validator](../validators/phone-number.md).
-
 ### `setOptions(array $options): void`
 
 Set options for an element of type `PhoneNumber`.
@@ -113,7 +108,7 @@ $element->setOptions([
 ])
 ```
 
-### `setDefaultCountry(string $code): void`
+### Set Default Country Code
 
 Sets the default country to validate national phone numbers against.
 
@@ -121,7 +116,7 @@ Sets the default country to validate national phone numbers against.
 $element->setDefaultCountry('GB');
 ```
 
-### `setCountryContext(string $inputName): void`
+### Set the Country Validation Context Key
 
 Sets the name of another input in your form that can be used to determine the country for validating national phone numbers, instead of the default country.
 
@@ -129,7 +124,7 @@ Sets the name of another input in your form that can be used to determine the co
 $element->setCountryContext('the-country-code-input-name');
 ```
 
-### `setAllowedTypes(int $types): void`
+### Set the Acceptable Number Types
 
 Provide a bitmask of [phone number types](../validators/phone-number.md#limiting-acceptable-number-types) to limit the types of number that are considered valid. For example:
 
@@ -138,3 +133,8 @@ use Laminas\I18n\PhoneNumber\PhoneNumberValue;
 
 $element->setAllowedTypes(PhoneNumberValue::TYPE_MOBILE | PhoneNumberValue::TYPE_EMERGENCY);
 ```
+
+### Retrieve default Input Specification
+
+`getInputSpecification(): array` returns an [input filter specification](https://docs.laminas.dev/laminas-inputfilter/specs/), which includes the `StringTrim` filter, and a phone number validator configured with the `default_country`, `country_context`, and `allowed_types` options.
+The validator options are described in greater detail in the documentation for the [phone number validator](../validators/phone-number.md).
