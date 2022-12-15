@@ -4,6 +4,8 @@ The `Laminas\I18n\PhoneNumber\View\Helper\PhoneNumberFormat` view helper provide
 
 --8<-- "installation-requirements.md"
 
+## Basic Usage
+
 The helper is aliased to `phoneNumberFormat` so within view scripts, it can be invoked in the following way:
 
 ```php
