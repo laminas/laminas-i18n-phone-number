@@ -2,6 +2,8 @@
 
 The `Laminas\I18n\PhoneNumber\View\Helper\PhoneNumberFormat` view helper provides a convenient way of formatting phone numbers in projects that make use of [`laminas/laminas-view`](https://docs.laminas.dev/laminas-view/).
 
+## Basic Usage
+
 The helper is aliased to `phoneNumberFormat` so within view scripts, it can be invoked in the following way:
 
 ```php
