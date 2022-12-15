@@ -98,7 +98,12 @@ The validator options are described in greater detail in the documentation for t
 
 ### `setOptions(array $options): void`
 
-Set options for an element of type `PhoneNumber`. The accepted options, in addition to the inherited options of [`Laminas\Form\Element`](https://docs.laminas.dev/laminas-form/v3/element/element/) are `default_country`, which calls `setDefaultCountry()`, `country_context`, which calls `setCountryContext()` and `allowed_types`, which calls `setAllowedTypes()`.
+Set options for an element of type `PhoneNumber`.
+The accepted options, in addition to the inherited options of [`Laminas\Form\Element`](https://docs.laminas.dev/laminas-form/v3/element/element/) are:
+
+- `default_country`, which calls `setDefaultCountry()` 
+- `country_context`, which calls `setCountryContext()`
+- `allowed_types`, which calls `setAllowedTypes()`.
 
 ```php
 $element->setOptions([
