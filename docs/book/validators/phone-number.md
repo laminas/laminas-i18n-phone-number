@@ -3,6 +3,8 @@
 `Laminas\I18n\PhoneNumber\Validator\PhoneNumber` allows you to determine if a given value **is a valid phone number**.
 Phone number formats are country specific.
 
+--8<-- "installation-requirements.md"
+
 ## Basic Usage
 
 ```php
