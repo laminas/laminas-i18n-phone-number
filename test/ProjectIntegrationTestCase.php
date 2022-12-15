@@ -33,6 +33,7 @@ abstract class ProjectIntegrationTestCase extends TestCase
         $dependencies = $config['dependencies'] ?? [];
         self::assertIsArray($dependencies);
         /** @psalm-var ServiceManagerConfigurationType $dependencies */
+        unset($dependencies['services']['config']);
         $dependencies['services']['config'] = $config;
 
         return new Laminas\ServiceManager\ServiceManager($dependencies);
