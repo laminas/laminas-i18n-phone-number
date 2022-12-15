@@ -90,14 +90,29 @@ The following methods are specific to the `PhoneNumber` element; all other metho
 defined by the [parent `Element` class](https://docs.laminas.dev/laminas-form/v3/element/element/#public-methods) are also
 available.
 
-Method signature                    | Description
------------------------------------ | -----------
-`getInputSpecification() : array`   | See write-up below.
-`setOptions(array $options) : void` | Set options for an element of type `PhoneNumber`. The accepted options, in addition to the inherited options of [`Laminas\Form\Element`](https://docs.laminas.dev/laminas-form/v3/element/element/#public-methods) are `default_country`, which calls `setDefaultCountry()`, `country_context`, which calls `setCountryContext()` and `allowed_types`, which calls `setAllowedTypes()`.
-`setDefaultCountry(string $code): void`  | Sets the default country to validate national phone numbers against.
-`setCountryContext(string $inputName): void`              | Sets the name of another input in your form that can be used to determine the country for validating national phone numbers, instead of the default country.
-`setAllowedTypes(int $types): void` | Is a bitmask of phone number types to limit what type of number are considered valid.
+### `getInputSpecification(): array`
 
-`getInputSpecification()` returns an input filter specification, which includes the `StringTrim` filter, and a phone number validator configured with the `default_country`, `country_context`, and `allowed_types` options.
+Returns an [input filter specification](https://docs.laminas.dev/laminas-inputfilter/specs/), which includes the `StringTrim` filter, and a phone number validator configured with the `default_country`, `country_context`, and `allowed_types` options.
+The validator options are described in greater detail in the documentation for the [phone number validator](../validators/phone-number.md).
 
-The options are described in greater detail in the documentation for the [phone number validator](../validators/phone-number.md).
+### `setOptions(array $options): void`
+
+Set options for an element of type `PhoneNumber`. The accepted options, in addition to the inherited options of [`Laminas\Form\Element`](https://docs.laminas.dev/laminas-form/v3/element/element/) are `default_country`, which calls `setDefaultCountry()`, `country_context`, which calls `setCountryContext()` and `allowed_types`, which calls `setAllowedTypes()`.
+
+### `setDefaultCountry(string $code): void`
+
+Sets the default country to validate national phone numbers against.
+
+### `setCountryContext(string $inputName): void`
+
+Sets the name of another input in your form that can be used to determine the country for validating national phone numbers, instead of the default country.
+
+### `setAllowedTypes(int $types): void`
+
+Provide a bitmask of [phone number types](../validators/phone-number.md#limiting-acceptable-number-types) to limit the types of number that are considered valid. For example:
+
+```php
+use Laminas\I18n\PhoneNumber\PhoneNumberValue;
+
+$element->setAllowedTypes(PhoneNumberValue::TYPE_MOBILE | PhoneNumberValue::TYPE_EMERGENCY);
+```
