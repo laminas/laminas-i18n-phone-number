@@ -2,7 +2,7 @@
 
 The `ToInternationalPhoneNumber` filter can be used to format phone numbers to the international format expected by the region the phone number belongs to.
 
---8<-- "installation-requirements.md"
+--8<-- "https://raw.githubusercontent.com/laminas/laminas-i18n-phone-number/1.0.x/docs/snippets/installation-requirements.md"
 
 ## Basic Usage
 

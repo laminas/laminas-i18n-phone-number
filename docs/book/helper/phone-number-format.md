@@ -2,7 +2,7 @@
 
 The `Laminas\I18n\PhoneNumber\View\Helper\PhoneNumberFormat` view helper provides a convenient way of formatting phone numbers in projects that make use of [`laminas/laminas-view`](https://docs.laminas.dev/laminas-view/).
 
---8<-- "installation-requirements.md"
+--8<-- "https://raw.githubusercontent.com/laminas/laminas-i18n-phone-number/1.0.x/docs/snippets/installation-requirements.md"
 
 ## Basic Usage
 
