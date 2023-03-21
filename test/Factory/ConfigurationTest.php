@@ -6,6 +6,7 @@ namespace Laminas\I18n\PhoneNumber\Test\Factory;
 
 use Laminas\I18n\CountryCode;
 use Locale;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
@@ -32,7 +33,7 @@ class ConfigurationTest extends TestCase
     }
 
     /** @return array<array-key, array{0: array}> */
-    public function nullConfigProvider(): array
+    public static function nullConfigProvider(): array
     {
         return [
             [[]],
@@ -41,7 +42,7 @@ class ConfigurationTest extends TestCase
         ];
     }
 
-    /** @dataProvider nullConfigProvider */
+    #[DataProvider('nullConfigProvider')]
     public function testGetCountryCodeForConfigurationSetupsThatResultInNull(array $config): void
     {
         Locale::setDefault('de_DE');

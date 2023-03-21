@@ -9,6 +9,7 @@ use Laminas\I18n\PhoneNumber\Exception\InvalidOptionException;
 use Laminas\I18n\PhoneNumber\PhoneNumberValue;
 use Laminas\I18n\PhoneNumber\Test\NumberGeneratorTrait;
 use Laminas\I18n\PhoneNumber\Validator\PhoneNumber;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Stringable;
 
@@ -26,7 +27,7 @@ class PhoneNumberTest extends TestCase
     }
 
     /** @return array<array-key, array{0: mixed}> */
-    public function invalidTypeProvider(): array
+    public static function invalidTypeProvider(): array
     {
         return [
             [''],
@@ -36,9 +37,9 @@ class PhoneNumberTest extends TestCase
     }
 
     /**
-     * @dataProvider invalidTypeProvider
      * @param mixed $value
      */
+    #[DataProvider('invalidTypeProvider')]
     public function testInvalidTypes($value): void
     {
         $validator = new PhoneNumber();
@@ -54,7 +55,7 @@ class PhoneNumberTest extends TestCase
     }
 
     /** @return array<array-key, array{0: non-empty-string}> */
-    public function invalidCountryProvider(): array
+    public static function invalidCountryProvider(): array
     {
         return [
             ['nuts'],
@@ -65,8 +66,8 @@ class PhoneNumberTest extends TestCase
 
     /**
      * @param non-empty-string $option
-     * @dataProvider invalidCountryProvider
      */
+    #[DataProvider('invalidCountryProvider')]
     public function testInvalidCountryOption(string $option): void
     {
         $this->expectException(InvalidOptionException::class);
@@ -75,7 +76,7 @@ class PhoneNumberTest extends TestCase
     }
 
     /** @return array<array-key, array{0: int}> */
-    public function invalidAllowedTypeProvider(): array
+    public static function invalidAllowedTypeProvider(): array
     {
         return [
             [0],
@@ -86,7 +87,7 @@ class PhoneNumberTest extends TestCase
         ];
     }
 
-    /** @dataProvider invalidAllowedTypeProvider */
+    #[DataProvider('invalidAllowedTypeProvider')]
     public function testInvalidAllowedTypes(int $option): void
     {
         $this->expectException(InvalidOptionException::class);
@@ -120,10 +121,10 @@ class PhoneNumberTest extends TestCase
     }
 
     /**
-     * @dataProvider invalidPhoneNumberProvider
      * @param non-empty-string $number
      * @param non-empty-string $country
      */
+    #[DataProvider('invalidPhoneNumberProvider')]
     public function testThatInvalidNumbersAreConsideredInvalid(string $number, string $country): void
     {
         $validator = new PhoneNumber();
@@ -133,10 +134,10 @@ class PhoneNumberTest extends TestCase
     }
 
     /**
-     * @dataProvider validPhoneNumberProvider
      * @param non-empty-string $number
      * @param non-empty-string $country
      */
+    #[DataProvider('validPhoneNumberProvider')]
     public function testThatValidNumbersAreConsideredValid(string $number, string $country): void
     {
         $validator = new PhoneNumber();

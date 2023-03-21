@@ -11,6 +11,7 @@ use Laminas\I18n\PhoneNumber\Filter\ToE164;
 use Laminas\I18n\PhoneNumber\Filter\ToInternationalPhoneNumber;
 use Laminas\I18n\PhoneNumber\Filter\ToNationalPhoneNumber;
 use Laminas\ServiceManager\ServiceManager;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 final class FilterPluginManagerIntegrationTest extends TestCase
@@ -27,7 +28,7 @@ final class FilterPluginManagerIntegrationTest extends TestCase
     }
 
     /** @return array<string, array{0: class-string<AbstractFilter>, 1: string}> */
-    public function filterClassProvider(): array
+    public static function filterClassProvider(): array
     {
         return [
             'E164'          => [ToE164::class, 'toE164'],
@@ -37,9 +38,9 @@ final class FilterPluginManagerIntegrationTest extends TestCase
     }
 
     /**
-     * @dataProvider filterClassProvider
      * @param class-string<AbstractFilter> $expectedClassName
      */
+    #[DataProvider('filterClassProvider')]
     public function testFiltersCanBeRetrievedByAlias(string $expectedClassName, string $alias): void
     {
         self::assertInstanceOf(
@@ -49,9 +50,9 @@ final class FilterPluginManagerIntegrationTest extends TestCase
     }
 
     /**
-     * @dataProvider filterClassProvider
      * @param class-string<AbstractFilter> $expectedClassName
      */
+    #[DataProvider('filterClassProvider')]
     public function testFiltersCanBeRetrievedByClassName(string $expectedClassName): void
     {
         self::assertInstanceOf(

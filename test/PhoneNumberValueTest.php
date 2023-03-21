@@ -8,6 +8,7 @@ use Laminas\I18n\PhoneNumber\Exception\ExceptionInterface;
 use Laminas\I18n\PhoneNumber\Exception\InvalidPhoneNumberForRegionException;
 use Laminas\I18n\PhoneNumber\Exception\UnrecognizableNumberException;
 use Laminas\I18n\PhoneNumber\PhoneNumberValue;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 class PhoneNumberValueTest extends TestCase
@@ -76,10 +77,10 @@ class PhoneNumberValueTest extends TestCase
     }
 
     /**
-     * @dataProvider validPhoneNumberProvider
      * @param non-empty-string $number
      * @param non-empty-string $region
      */
+    #[DataProvider('validPhoneNumberProvider')]
     public function testThatTheExpectedTypeOfPhoneNumberIsDetected(
         string $number,
         string $region,
@@ -91,10 +92,10 @@ class PhoneNumberValueTest extends TestCase
     }
 
     /**
-     * @dataProvider validPhoneNumberProvider
      * @param non-empty-string $number
      * @param non-empty-string $region
      */
+    #[DataProvider('validPhoneNumberProvider')]
     public function testThatAnyTypeOfValidPhoneNumberCanBeFormattedToANationalNumber(
         string $number,
         string $region
@@ -104,10 +105,10 @@ class PhoneNumberValueTest extends TestCase
     }
 
     /**
-     * @dataProvider validPhoneNumberProvider
      * @param non-empty-string $number
      * @param non-empty-string $region
      */
+    #[DataProvider('validPhoneNumberProvider')]
     public function testThatAnyTypeOfValidPhoneNumberCanBeFormattedToAnInternationalNumber(
         string $number,
         string $region
@@ -117,10 +118,10 @@ class PhoneNumberValueTest extends TestCase
     }
 
     /**
-     * @dataProvider validPhoneNumberProvider
      * @param non-empty-string $number
      * @param non-empty-string $region
      */
+    #[DataProvider('validPhoneNumberProvider')]
     public function testThatAnyTypeOfValidPhoneNumberCanBeFormattedToE164(
         string $number,
         string $region
@@ -130,10 +131,10 @@ class PhoneNumberValueTest extends TestCase
     }
 
     /**
-     * @dataProvider validPhoneNumberProvider
      * @param non-empty-string $number
      * @param non-empty-string $region
      */
+    #[DataProvider('validPhoneNumberProvider')]
     public function testThatAnyTypeOfValidPhoneNumberCanBeFormattedToRFC3966(
         string $number,
         string $region
@@ -143,10 +144,10 @@ class PhoneNumberValueTest extends TestCase
     }
 
     /**
-     * @dataProvider validPhoneNumberProvider
      * @param non-empty-string $number
      * @param non-empty-string $region
      */
+    #[DataProvider('validPhoneNumberProvider')]
     public function testThatAnyTypeOfValidPhoneNumberCanBeFormattedToAnOutOfCountryNumber(
         string $number,
         string $region
@@ -156,10 +157,10 @@ class PhoneNumberValueTest extends TestCase
     }
 
     /**
-     * @dataProvider validPhoneNumberProvider
      * @param non-empty-string $number
      * @param non-empty-string $region
      */
+    #[DataProvider('validPhoneNumberProvider')]
     public function testThatAllValidNumbersWillHaveARegionCode(
         string $number,
         string $region
@@ -172,7 +173,7 @@ class PhoneNumberValueTest extends TestCase
     }
 
     /** @return array<string, array{0: non-empty-string, 1: non-empty-string}> */
-    public function internationalFormatsProvider(): array
+    public static function internationalFormatsProvider(): array
     {
         return [
             'E164'        => ['+441392345678', '+441392345678'],
@@ -186,10 +187,10 @@ class PhoneNumberValueTest extends TestCase
     }
 
     /**
-     * @dataProvider internationalFormatsProvider
      * @param non-empty-string $inputNumber
      * @param non-empty-string $e164
      */
+    #[DataProvider('internationalFormatsProvider')]
     public function testThatANormalNumberIsIdentifiedInVariousInternationalFormats(
         string $inputNumber,
         string $e164
@@ -216,10 +217,10 @@ class PhoneNumberValueTest extends TestCase
     }
 
     /**
-     * @dataProvider invalidPhoneNumberProvider
      * @param non-empty-string $number
      * @param non-empty-string $country
      */
+    #[DataProvider('invalidPhoneNumberProvider')]
     public function testThatAllInvalidNumbersCauseExceptions(string $number, string $country): void
     {
         $this->expectException(ExceptionInterface::class);

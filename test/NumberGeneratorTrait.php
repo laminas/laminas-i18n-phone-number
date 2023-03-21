@@ -24,7 +24,7 @@ trait NumberGeneratorTrait
      * @psalm-suppress MoreSpecificReturnType
      * @return Generator<string, array{0: non-empty-string, 1: non-empty-string, 2: int}>
      */
-    public function validPhoneNumberProvider(): Generator
+    public static function validPhoneNumberProvider(): Generator
     {
         $util  = PhoneNumberUtil::getInstance();
         $short = ShortNumberInfo::getInstance();
@@ -96,7 +96,7 @@ trait NumberGeneratorTrait
      * @psalm-suppress MoreSpecificReturnType
      * @return Generator<string, array{0: non-empty-string, 1: non-empty-string}>
      */
-    public function invalidPhoneNumberProvider(): Generator
+    public static function invalidPhoneNumberProvider(): Generator
     {
         $util = PhoneNumberUtil::getInstance();
         /** @var list<non-empty-string> $regions */

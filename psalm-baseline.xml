@@ -1,8 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="4.30.0@d0bc6e25d89f649e4f36a534f330f8bb4643dd69">
-  <file src="src/Validator/PhoneNumber.php">
-    <PossiblyInvalidArgument occurrences="1">
-      <code>$options</code>
-    </PossiblyInvalidArgument>
+<files psalm-version="5.8.0@9cf4f60a333f779ad3bc704a555920e81d4fdcda">
+  <file src="src/Filter/Factory/ToE164Factory.php">
+    <UnusedParam>
+      <code>$name</code>
+    </UnusedParam>
+  </file>
+  <file src="src/Filter/Factory/ToInternationalPhoneNumberFactory.php">
+    <UnusedParam>
+      <code>$name</code>
+    </UnusedParam>
+  </file>
+  <file src="src/Filter/Factory/ToNationalPhoneNumberFactory.php">
+    <UnusedParam>
+      <code>$name</code>
+    </UnusedParam>
+  </file>
+  <file src="src/Form/Element/Factory/PhoneNumberFactory.php">
+    <UnusedParam>
+      <code>$requestedName</code>
+    </UnusedParam>
+  </file>
+  <file src="src/Module.php">
+    <UnusedClass>
+      <code>Module</code>
+    </UnusedClass>
+  </file>
+  <file src="src/Validator/Factory/PhoneNumberFactory.php">
+    <UnusedParam>
+      <code>$requestedName</code>
+    </UnusedParam>
+  </file>
+  <file src="test/Factory/ConfigurationTest.php">
+    <PossiblyUnusedMethod>
+      <code>nullConfigProvider</code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="test/Filter/AbstractFilterTest.php">
+    <PossiblyUnusedMethod>
+      <code>filterClassProvider</code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="test/Filter/FilterPluginManagerIntegrationTest.php">
+    <PossiblyUnusedMethod>
+      <code>filterClassProvider</code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="test/Form/FormIntegrationTest.php">
+    <PossiblyUnusedMethod>
+      <code>validE164Provider</code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="test/NumberGeneratorTrait.php">
+    <PossiblyUnusedMethod>
+      <code>invalidPhoneNumberProvider</code>
+      <code>invalidPhoneNumberProvider</code>
+      <code>invalidPhoneNumberProvider</code>
+      <code>validPhoneNumberProvider</code>
+      <code>validPhoneNumberProvider</code>
+      <code>validPhoneNumberProvider</code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="test/PhoneNumberValueTest.php">
+    <PossiblyUnusedMethod>
+      <code>internationalFormatsProvider</code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="test/Validator/PhoneNumberTest.php">
+    <PossiblyUnusedMethod>
+      <code>invalidAllowedTypeProvider</code>
+      <code>invalidCountryProvider</code>
+      <code>invalidTypeProvider</code>
+    </PossiblyUnusedMethod>
   </file>
 </files>

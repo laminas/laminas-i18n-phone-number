@@ -10,13 +10,14 @@ use Laminas\I18n\PhoneNumber\Filter\ToE164;
 use Laminas\I18n\PhoneNumber\Filter\ToInternationalPhoneNumber;
 use Laminas\I18n\PhoneNumber\Filter\ToNationalPhoneNumber;
 use Laminas\I18n\PhoneNumber\PhoneNumberValue;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Stringable;
 
 class AbstractFilterTest extends TestCase
 {
     /** @return array<string, array{0: class-string<AbstractFilter>}> */
-    public function filterClassProvider(): array
+    public static function filterClassProvider(): array
     {
         return [
             'E164'          => [ToE164::class],
@@ -26,9 +27,9 @@ class AbstractFilterTest extends TestCase
     }
 
     /**
-     * @dataProvider filterClassProvider
      * @param class-string<AbstractFilter> $class
      */
+    #[DataProvider('filterClassProvider')]
     public function testThatWithAFallbackCountryANumberWillBeFormatted(string $class): void
     {
         $number = '01234 567 890';
@@ -37,9 +38,9 @@ class AbstractFilterTest extends TestCase
     }
 
     /**
-     * @dataProvider filterClassProvider
      * @param class-string<AbstractFilter> $class
      */
+    #[DataProvider('filterClassProvider')]
     public function testThatExistingNumberObjectsWillBeFilteredToAString(string $class): void
     {
         $number = '01234 567 890';
@@ -51,9 +52,9 @@ class AbstractFilterTest extends TestCase
     }
 
     /**
-     * @dataProvider filterClassProvider
      * @param class-string<AbstractFilter> $class
      */
+    #[DataProvider('filterClassProvider')]
     public function testThatNonScalarValuesWillBeReturnedAsIs(string $class): void
     {
         $filter = new $class(CountryCode::fromString('GB'));
@@ -61,9 +62,9 @@ class AbstractFilterTest extends TestCase
     }
 
     /**
-     * @dataProvider filterClassProvider
      * @param class-string<AbstractFilter> $class
      */
+    #[DataProvider('filterClassProvider')]
     public function testThatEmptyOrNonStringValuesWillBeReturnedAsIs(string $class): void
     {
         $filter = new $class(CountryCode::fromString('GB'));
@@ -77,9 +78,9 @@ class AbstractFilterTest extends TestCase
     }
 
     /**
-     * @dataProvider filterClassProvider
      * @param class-string<AbstractFilter> $class
      */
+    #[DataProvider('filterClassProvider')]
     public function testThatAStringableObjectWillConvertedToAStringForFiltering(string $class): void
     {
         $object = new class implements Stringable {
@@ -95,9 +96,9 @@ class AbstractFilterTest extends TestCase
     }
 
     /**
-     * @dataProvider filterClassProvider
      * @param class-string<AbstractFilter> $class
      */
+    #[DataProvider('filterClassProvider')]
     public function testThatTheDefaultCountryCodeCanBeOverriddenBySettingOptionsAtRuntime(string $class): void
     {
         $filter = new $class(CountryCode::fromString('GB'));
@@ -113,9 +114,9 @@ class AbstractFilterTest extends TestCase
     }
 
     /**
-     * @dataProvider filterClassProvider
      * @param class-string<AbstractFilter> $class
      */
+    #[DataProvider('filterClassProvider')]
     public function testThatTheDefaultCountryCodeCanBeOverriddenBySettingOptionsDuringConstruction(string $class): void
     {
         $filter = new $class(CountryCode::fromString('GB'), ['country-code' => 'DE']);

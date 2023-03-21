@@ -14,6 +14,7 @@ use Psr\Container\ContainerInterface;
  */
 final class Configuration
 {
+    /** @psalm-suppress UnusedConstructor */
     private function __construct()
     {
     }
