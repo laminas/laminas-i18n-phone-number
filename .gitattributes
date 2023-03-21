@@ -10,3 +10,7 @@
 /renovate.json
 /test/ export-ignore
 /composer-require-checker.json export-ignore
+/docs export-ignore
+/.psr-container.php.stub export-ignore
+/composer.lock export-ignore
+/renovate.json export-ignore
