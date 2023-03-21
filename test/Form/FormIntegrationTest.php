@@ -11,6 +11,7 @@ use Laminas\I18n\PhoneNumber\Form\Element\PhoneNumber;
 use Laminas\I18n\PhoneNumber\PhoneNumberValue;
 use Laminas\I18n\PhoneNumber\Test\NumberGeneratorTrait;
 use Laminas\I18n\PhoneNumber\Test\ProjectIntegrationTestCase;
+use PHPUnit\Framework\Attributes\DataProvider;
 use Psr\Container\ContainerInterface;
 
 use function assert;
@@ -43,7 +44,7 @@ final class FormIntegrationTest extends ProjectIntegrationTestCase
         self::assertInstanceOf(PhoneNumber::class, $this->formElements->get(PhoneNumber::class));
     }
 
-    /** @dataProvider validPhoneNumberProvider */
+    #[DataProvider('validPhoneNumberProvider')]
     public function testThatGivenACountryContextThePhoneNumberHasTheExpectedValue(
         string $number,
         string $country,
@@ -79,7 +80,7 @@ final class FormIntegrationTest extends ProjectIntegrationTestCase
     }
 
     /** @return list<array{0: string}> */
-    public function validE164Provider(): array
+    public static function validE164Provider(): array
     {
         return [
             ['+44 (0) 1234 567 890'],
@@ -88,7 +89,7 @@ final class FormIntegrationTest extends ProjectIntegrationTestCase
         ];
     }
 
-    /** @dataProvider validE164Provider */
+    #[DataProvider('validE164Provider')]
     public function testThatAValidE164WithNoOtherContextIsConsideredValid(string $input): void
     {
         $this->form->add([
@@ -110,7 +111,7 @@ final class FormIntegrationTest extends ProjectIntegrationTestCase
         ], $this->form->getData());
     }
 
-    /** @dataProvider validPhoneNumberProvider */
+    #[DataProvider('validPhoneNumberProvider')]
     public function testThatTheCountryContextTakesPrecedenceOverTheDefaultCountry(
         string $number,
         string $country,
