@@ -50,7 +50,7 @@
         "laminas/laminas-config-aggregator": "^1.13",
         "laminas/laminas-servicemanager": "^3.20",
         "maglnet/composer-require-checker": "^4.5",
-        "phpunit/phpunit": "^10.0.17",
+        "phpunit/phpunit": "^10.1.0",
         "psalm/plugin-phpunit": "^0.18.4",
         "vimeo/psalm": "^5.8"
     },
