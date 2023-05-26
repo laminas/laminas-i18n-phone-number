@@ -471,24 +471,24 @@
         },
         {
             "name": "laminas/laminas-inputfilter",
-            "version": "2.24.1",
+            "version": "2.25.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-inputfilter.git",
-                "reference": "c5a53b1e72a2270b441391728291f7136e9461d1"
+                "reference": "d516832d6545f542a9c723d48a0fb5843cd7e2ff"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laminas/laminas-inputfilter/zipball/c5a53b1e72a2270b441391728291f7136e9461d1",
-                "reference": "c5a53b1e72a2270b441391728291f7136e9461d1",
+                "url": "https://api.github.com/repos/laminas/laminas-inputfilter/zipball/d516832d6545f542a9c723d48a0fb5843cd7e2ff",
+                "reference": "d516832d6545f542a9c723d48a0fb5843cd7e2ff",
                 "shasum": ""
             },
             "require": {
                 "laminas/laminas-filter": "^2.13",
-                "laminas/laminas-servicemanager": "^3.16.0",
+                "laminas/laminas-servicemanager": "^3.21.0",
                 "laminas/laminas-stdlib": "^3.0",
                 "laminas/laminas-validator": "^2.15",
-                "php": "~8.0.0 || ~8.1.0 || ~8.2.0"
+                "php": "~8.1.0 || ~8.2.0"
             },
             "conflict": {
                 "zendframework/zend-inputfilter": "*"
@@ -496,10 +496,10 @@
             "require-dev": {
                 "ext-json": "*",
                 "laminas/laminas-coding-standard": "~2.5.0",
-                "phpunit/phpunit": "^9.5.27",
+                "phpunit/phpunit": "^10.1.3",
                 "psalm/plugin-phpunit": "^0.18.4",
-                "psr/http-message": "^1.0.1",
-                "vimeo/psalm": "^5.4",
+                "psr/http-message": "^2.0",
+                "vimeo/psalm": "^5.12",
                 "webmozart/assert": "^1.11"
             },
             "suggest": {
@@ -541,7 +541,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2023-04-05T08:44:05+00:00"
+            "time": "2023-05-24T16:13:12+00:00"
         },
         {
             "name": "laminas/laminas-servicemanager",
