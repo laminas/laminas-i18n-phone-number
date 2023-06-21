@@ -471,16 +471,16 @@
         },
         {
             "name": "laminas/laminas-inputfilter",
-            "version": "2.25.0",
+            "version": "2.26.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-inputfilter.git",
-                "reference": "d516832d6545f542a9c723d48a0fb5843cd7e2ff"
+                "reference": "d054b8f866244c7fc872f446d071f21bae073b2f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laminas/laminas-inputfilter/zipball/d516832d6545f542a9c723d48a0fb5843cd7e2ff",
-                "reference": "d516832d6545f542a9c723d48a0fb5843cd7e2ff",
+                "url": "https://api.github.com/repos/laminas/laminas-inputfilter/zipball/d054b8f866244c7fc872f446d071f21bae073b2f",
+                "reference": "d054b8f866244c7fc872f446d071f21bae073b2f",
                 "shasum": ""
             },
             "require": {
@@ -541,7 +541,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2023-05-24T16:13:12+00:00"
+            "time": "2023-06-20T15:53:18+00:00"
         },
         {
             "name": "laminas/laminas-servicemanager",
