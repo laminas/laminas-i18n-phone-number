@@ -471,23 +471,23 @@
         },
         {
             "name": "laminas/laminas-inputfilter",
-            "version": "2.26.0",
+            "version": "2.27.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-inputfilter.git",
-                "reference": "d054b8f866244c7fc872f446d071f21bae073b2f"
+                "reference": "1446fe8aa8b05107295964e678b75a7e0b9302cb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laminas/laminas-inputfilter/zipball/d054b8f866244c7fc872f446d071f21bae073b2f",
-                "reference": "d054b8f866244c7fc872f446d071f21bae073b2f",
+                "url": "https://api.github.com/repos/laminas/laminas-inputfilter/zipball/1446fe8aa8b05107295964e678b75a7e0b9302cb",
+                "reference": "1446fe8aa8b05107295964e678b75a7e0b9302cb",
                 "shasum": ""
             },
             "require": {
-                "laminas/laminas-filter": "^2.13",
+                "laminas/laminas-filter": "^2.19",
                 "laminas/laminas-servicemanager": "^3.21.0",
                 "laminas/laminas-stdlib": "^3.0",
-                "laminas/laminas-validator": "^2.15",
+                "laminas/laminas-validator": "^2.25",
                 "php": "~8.1.0 || ~8.2.0"
             },
             "conflict": {
@@ -541,7 +541,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2023-06-20T15:53:18+00:00"
+            "time": "2023-07-14T15:58:54+00:00"
         },
         {
             "name": "laminas/laminas-servicemanager",
@@ -2814,16 +2814,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "10.2.4",
+            "version": "10.2.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "68484779b5a2ed711fbdeba6ca01910d87acdff2"
+                "reference": "15a89f123d8ca9c1e1598d6d87a56a8bf28c72cd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/68484779b5a2ed711fbdeba6ca01910d87acdff2",
-                "reference": "68484779b5a2ed711fbdeba6ca01910d87acdff2",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/15a89f123d8ca9c1e1598d6d87a56a8bf28c72cd",
+                "reference": "15a89f123d8ca9c1e1598d6d87a56a8bf28c72cd",
                 "shasum": ""
             },
             "require": {
@@ -2895,7 +2895,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
                 "security": "https://github.com/sebastianbergmann/phpunit/security/policy",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/10.2.4"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/10.2.5"
             },
             "funding": [
                 {
@@ -2911,7 +2911,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-07-10T04:06:08+00:00"
+            "time": "2023-07-14T04:18:47+00:00"
         },
         {
             "name": "psalm/plugin-phpunit",
