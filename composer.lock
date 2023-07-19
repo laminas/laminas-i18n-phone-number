@@ -212,16 +212,16 @@
         },
         {
             "name": "laminas/laminas-form",
-            "version": "3.12.0",
+            "version": "3.13.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-form.git",
-                "reference": "263d18601cfcddf6621889704d66b4a1c7422d63"
+                "reference": "c6100a664879b6f5638b0fae0c844051f2159902"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laminas/laminas-form/zipball/263d18601cfcddf6621889704d66b4a1c7422d63",
-                "reference": "263d18601cfcddf6621889704d66b4a1c7422d63",
+                "url": "https://api.github.com/repos/laminas/laminas-form/zipball/c6100a664879b6f5638b0fae0c844051f2159902",
+                "reference": "c6100a664879b6f5638b0fae0c844051f2159902",
                 "shasum": ""
             },
             "require": {
@@ -244,21 +244,21 @@
                 "ext-intl": "*",
                 "laminas/laminas-captcha": "^2.16",
                 "laminas/laminas-coding-standard": "^2.5",
-                "laminas/laminas-db": "^2.17",
+                "laminas/laminas-db": "^2.18",
                 "laminas/laminas-escaper": "^2.12",
                 "laminas/laminas-eventmanager": "^3.10",
-                "laminas/laminas-filter": "^2.31",
-                "laminas/laminas-i18n": "^2.21",
+                "laminas/laminas-filter": "^2.32",
+                "laminas/laminas-i18n": "^2.23",
                 "laminas/laminas-modulemanager": "^2.14.0",
                 "laminas/laminas-recaptcha": "^3.6",
-                "laminas/laminas-servicemanager": "^3.20",
+                "laminas/laminas-servicemanager": "^3.21",
                 "laminas/laminas-session": "^2.16",
                 "laminas/laminas-text": "^2.10.0",
-                "laminas/laminas-validator": "^2.30.1",
-                "laminas/laminas-view": "^2.27",
-                "phpunit/phpunit": "^10.0.16",
+                "laminas/laminas-validator": "^2.33",
+                "laminas/laminas-view": "^2.28",
+                "phpunit/phpunit": "^10.2.2",
                 "psalm/plugin-phpunit": "^0.18.4",
-                "vimeo/psalm": "^5.8"
+                "vimeo/psalm": "^5.13"
             },
             "suggest": {
                 "doctrine/annotations": "^1.14, required to use laminas-form annotations support",
@@ -305,7 +305,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2023-06-26T22:26:33+00:00"
+            "time": "2023-07-18T12:39:09+00:00"
         },
         {
             "name": "laminas/laminas-hydrator",
