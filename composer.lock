@@ -212,16 +212,16 @@
         },
         {
             "name": "laminas/laminas-form",
-            "version": "3.13.0",
+            "version": "3.13.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-form.git",
-                "reference": "c6100a664879b6f5638b0fae0c844051f2159902"
+                "reference": "8883a89165c4d84953313941bfba7c3d34ba298d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laminas/laminas-form/zipball/c6100a664879b6f5638b0fae0c844051f2159902",
-                "reference": "c6100a664879b6f5638b0fae0c844051f2159902",
+                "url": "https://api.github.com/repos/laminas/laminas-form/zipball/8883a89165c4d84953313941bfba7c3d34ba298d",
+                "reference": "8883a89165c4d84953313941bfba7c3d34ba298d",
                 "shasum": ""
             },
             "require": {
@@ -305,7 +305,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2023-07-18T12:39:09+00:00"
+            "time": "2023-10-17T06:24:46+00:00"
         },
         {
             "name": "laminas/laminas-hydrator",
