@@ -50,9 +50,9 @@
         "laminas/laminas-config-aggregator": "^1.14",
         "laminas/laminas-servicemanager": "^3.22.1",
         "maglnet/composer-require-checker": "^4.7.1",
-        "phpunit/phpunit": "^10.4.2",
+        "phpunit/phpunit": "^10.5.7",
         "psalm/plugin-phpunit": "^0.18.4",
-        "vimeo/psalm": "^5.15"
+        "vimeo/psalm": "^5.19"
     },
     "autoload": {
         "psr-4": {
