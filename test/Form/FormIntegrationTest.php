@@ -7,6 +7,7 @@ namespace Laminas\I18n\PhoneNumber\Test\Form;
 use Laminas\Form\Element\Text;
 use Laminas\Form\Form;
 use Laminas\Form\FormElementManager;
+use Laminas\Form\FormInterface;
 use Laminas\I18n\PhoneNumber\Form\Element\PhoneNumber;
 use Laminas\I18n\PhoneNumber\PhoneNumberValue;
 use Laminas\I18n\PhoneNumber\Test\NumberGeneratorTrait;
@@ -33,9 +34,7 @@ final class FormIntegrationTest extends ProjectIntegrationTestCase
         $formElements = $this->container->get(FormElementManager::class);
         /** @psalm-suppress RedundantCondition */
         assert($formElements instanceof FormElementManager);
-        $form = $formElements->get(Form::class);
-        assert($form instanceof Form);
-        $this->form         = $form;
+        $this->form         = $formElements->get(Form::class);
         $this->formElements = $formElements;
     }
 
@@ -228,7 +227,7 @@ final class FormIntegrationTest extends ProjectIntegrationTestCase
         );
 
         $form = $this->formElements->get(Form::class);
-        assert($form instanceof Form);
+        assert($form instanceof FormInterface);
         $form->add($element, ['name' => 'num']);
 
         $form->setData(['num' => '999']);
