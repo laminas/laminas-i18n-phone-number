@@ -32,9 +32,9 @@ abstract class ProjectIntegrationTestCase extends TestCase
         $config       = $aggregator->getMergedConfig();
         $dependencies = $config['dependencies'] ?? [];
         self::assertIsArray($dependencies);
-        /** @psalm-var ServiceManagerConfigurationType $dependencies */
-        unset($dependencies['services']['config']);
+        /** @psalm-suppress MixedArrayAssignment */
         $dependencies['services']['config'] = $config;
+        /** @psalm-var ServiceManagerConfigurationType $dependencies */
 
         return new Laminas\ServiceManager\ServiceManager($dependencies);
     }

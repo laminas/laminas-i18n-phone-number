@@ -25,7 +25,7 @@ final class PhoneNumberFormat
      */
     private function coalesceCountryCode(?string $countryCodeOrLocale): CountryCode
     {
-        $code = $countryCodeOrLocale ? CountryCode::tryFromString($countryCodeOrLocale) : null;
+        $code = $countryCodeOrLocale !== null ? CountryCode::tryFromString($countryCodeOrLocale) : null;
 
         return $code ?? $this->defaultCountryCode;
     }
