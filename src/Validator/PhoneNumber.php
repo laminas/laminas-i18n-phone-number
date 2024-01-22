@@ -190,7 +190,7 @@ final class PhoneNumber extends AbstractValidator
     /** @param array<string, mixed> $validationContext */
     private function resolveCountry(?array $validationContext): ?CountryCode
     {
-        if (! is_array($validationContext) || ! $this->countryContext) {
+        if (! is_array($validationContext) || $this->countryContext === null) {
             return $this->country;
         }
 

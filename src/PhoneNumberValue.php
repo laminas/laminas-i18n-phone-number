@@ -190,7 +190,7 @@ final class PhoneNumberValue
     private static function regionCodeForNumber(LibPhoneNumber $number, ?string $givenCode): ?string
     {
         $dialingCode = $number->getCountryCode();
-        if (! $dialingCode) {
+        if ($dialingCode === null) {
             return $givenCode;
         }
 
