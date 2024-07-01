@@ -98,7 +98,9 @@ trait NumberGeneratorTrait
      */
     public static function invalidPhoneNumberProvider(): Generator
     {
-        $util = PhoneNumberUtil::getInstance();
+        $util      = PhoneNumberUtil::getInstance();
+        $shortInfo = ShortNumberInfo::getInstance();
+
         /** @var list<non-empty-string> $regions */
         $regions = $util->getSupportedRegions();
         foreach ($regions as $country) {
@@ -106,6 +108,19 @@ trait NumberGeneratorTrait
             if (! $number) {
                 continue;
             }
+
+            if (
+                $util->isValidNumber($number)
+                ||
+                $util->isValidNumberForRegion($number, $country)
+                ||
+                $shortInfo->isValidShortNumber($number)
+                ||
+                $shortInfo->isValidShortNumberForRegion($number, $country)
+            ) {
+                continue;
+            }
+
             $national = $number->getNationalNumber();
             assert(is_string($national));
 
