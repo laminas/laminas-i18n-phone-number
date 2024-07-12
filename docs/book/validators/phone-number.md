@@ -122,14 +122,17 @@ $options = [
 $validator = new PhoneNumber($options);
 ```
 
+## Runtime Modification of Options
+
+CAUTION: **Deprecated**
+Runtime mutation of options is deprecated and will be removed in version 2.0
+
 Options can also be changed at runtime with:
 
 ```php
 $validator = new Laminas\I18n\PhoneNumber\Validator\PhoneNumber();
 $validator->setOptions($options);
 ```
-
-## Runtime Modification of Options
 
 Each of the 3 options have companion "setters" to change the runtime behaviour of the validator after it has been constructed:
 
