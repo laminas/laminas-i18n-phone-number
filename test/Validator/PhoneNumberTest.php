@@ -36,11 +36,8 @@ class PhoneNumberTest extends TestCase
         ];
     }
 
-    /**
-     * @param mixed $value
-     */
     #[DataProvider('invalidTypeProvider')]
-    public function testInvalidTypes($value): void
+    public function testInvalidTypes(mixed $value): void
     {
         $validator = new PhoneNumber();
         self::assertFalse($validator->isValid($value));
@@ -72,7 +69,7 @@ class PhoneNumberTest extends TestCase
     {
         $this->expectException(InvalidOptionException::class);
         $this->expectExceptionMessage('Country codes must be ISO 3166 2-letter codes');
-        (new PhoneNumber())->setCountry($option);
+        new PhoneNumber(['country' => $option]);
     }
 
     /** @return array<array-key, array{0: int}> */
@@ -92,7 +89,7 @@ class PhoneNumberTest extends TestCase
     {
         $this->expectException(InvalidOptionException::class);
         $this->expectExceptionMessage('The allowed types provided do not match known valid types');
-        (new PhoneNumber())->setAllowedTypes($option);
+        new PhoneNumber(['allowedTypes' => $option]);
     }
 
     public function testThatWhenTheCountryIsProvidedNationalPhoneNumbersAreValid(): void
@@ -127,8 +124,7 @@ class PhoneNumberTest extends TestCase
     #[DataProvider('invalidPhoneNumberProvider')]
     public function testThatInvalidNumbersAreConsideredInvalid(string $number, string $country): void
     {
-        $validator = new PhoneNumber();
-        $validator->setCountry($country);
+        $validator = new PhoneNumber(['country' => $country]);
 
         self::assertFalse($validator->isValid($number));
     }
@@ -140,8 +136,7 @@ class PhoneNumberTest extends TestCase
     #[DataProvider('validPhoneNumberProvider')]
     public function testThatValidNumbersAreConsideredValid(string $number, string $country): void
     {
-        $validator = new PhoneNumber();
-        $validator->setCountry($country);
+        $validator = new PhoneNumber(['country' => $country]);
 
         self::assertTrue($validator->isValid($number));
     }
@@ -159,12 +154,10 @@ class PhoneNumberTest extends TestCase
         $validator = new PhoneNumber();
         self::assertTrue($validator->isValid($possible), 'The number should be "normally" valid');
 
-        $validator = new PhoneNumber();
-        $validator->setAllowedTypes(PhoneNumberValue::TYPE_MOBILE);
+        $validator = new PhoneNumber(['allowedTypes' => PhoneNumberValue::TYPE_MOBILE]);
         self::assertTrue($validator->isValid($possible), 'The number should still be valid when allowed types are set');
 
-        $validator = new PhoneNumber();
-        $validator->setAllowedTypes(PhoneNumberValue::TYPE_FIXED);
+        $validator = new PhoneNumber(['allowedTypes' => PhoneNumberValue::TYPE_FIXED]);
         self::assertTrue($validator->isValid($possible), 'The number should still be valid when allowed types are set');
     }
 
@@ -195,12 +188,10 @@ class PhoneNumberTest extends TestCase
             }
         };
 
-        $validator = new PhoneNumber();
-        $validator->setCountry('GB');
+        $validator = new PhoneNumber(['country' => 'GB']);
         self::assertTrue($validator->isValid($object));
 
-        $validator = new PhoneNumber();
-        $validator->setCountry('US');
+        $validator = new PhoneNumber(['country' => 'US']);
         self::assertFalse($validator->isValid($object));
         $messages = $validator->getMessages();
         self::assertArrayHasKey(PhoneNumber::INVALID, $messages);

@@ -78,6 +78,8 @@ final class PhoneNumber extends AbstractValidator
     }
 
     /**
+     * @deprecated Since 1.2.0 Option setters will be removed in 2.0. Provide options to the constructor instead
+     *
      * @param Options|iterable<string, mixed> $options
      * @return $this
      */
@@ -156,7 +158,11 @@ final class PhoneNumber extends AbstractValidator
         return true;
     }
 
-    /** @param non-empty-string $countryCodeOrLocale */
+    /**
+     * @deprecated Since 1.2.0 Option setters will be removed in 2.0. Provide options to the constructor instead
+     *
+     * @param non-empty-string $countryCodeOrLocale
+     */
     public function setCountry(string $countryCodeOrLocale): void
     {
         $code = CountryCode::tryFromString($countryCodeOrLocale);
@@ -171,13 +177,21 @@ final class PhoneNumber extends AbstractValidator
         $this->country = $code;
     }
 
-    /** @param non-empty-string $inputName */
+    /**
+     * @deprecated Since 1.2.0 Option setters will be removed in 2.0. Provide options to the constructor instead
+     *
+     * @param non-empty-string $inputName
+     */
     public function setCountryContext(string $inputName): void
     {
         $this->countryContext = $inputName;
     }
 
-    /** @param int-mask-of<PhoneNumberValue::TYPE_*> $types */
+    /**
+     * @deprecated Since 1.2.0 Option setters will be removed in 2.0. Provide options to the constructor instead
+     *
+     * @param int-mask-of<PhoneNumberValue::TYPE_*> $types
+     */
     public function setAllowedTypes(int $types): void
     {
         if ($types <= 0 || ($types & PhoneNumberValue::TYPE_KNOWN) !== $types) {

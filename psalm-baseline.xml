@@ -1,75 +1,87 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="5.8.0@9cf4f60a333f779ad3bc704a555920e81d4fdcda">
+<files psalm-version="5.25.0@01a8eb06b9e9cc6cfb6a320bf9fb14331919d505">
   <file src="src/Filter/Factory/ToE164Factory.php">
     <UnusedParam>
-      <code>$name</code>
+      <code><![CDATA[$name]]></code>
     </UnusedParam>
   </file>
   <file src="src/Filter/Factory/ToInternationalPhoneNumberFactory.php">
     <UnusedParam>
-      <code>$name</code>
+      <code><![CDATA[$name]]></code>
     </UnusedParam>
   </file>
   <file src="src/Filter/Factory/ToNationalPhoneNumberFactory.php">
     <UnusedParam>
-      <code>$name</code>
+      <code><![CDATA[$name]]></code>
     </UnusedParam>
   </file>
   <file src="src/Form/Element/Factory/PhoneNumberFactory.php">
     <UnusedParam>
-      <code>$requestedName</code>
+      <code><![CDATA[$requestedName]]></code>
     </UnusedParam>
   </file>
   <file src="src/Module.php">
     <UnusedClass>
-      <code>Module</code>
+      <code><![CDATA[Module]]></code>
     </UnusedClass>
   </file>
   <file src="src/Validator/Factory/PhoneNumberFactory.php">
     <UnusedParam>
-      <code>$requestedName</code>
+      <code><![CDATA[$requestedName]]></code>
     </UnusedParam>
+  </file>
+  <file src="src/Validator/PhoneNumber.php">
+    <DeprecatedMethod>
+      <code><![CDATA[parent::setOptions($options)]]></code>
+      <code><![CDATA[setAllowedTypes]]></code>
+      <code><![CDATA[setCountry]]></code>
+      <code><![CDATA[setCountryContext]]></code>
+    </DeprecatedMethod>
   </file>
   <file src="test/Factory/ConfigurationTest.php">
     <PossiblyUnusedMethod>
-      <code>nullConfigProvider</code>
+      <code><![CDATA[nullConfigProvider]]></code>
     </PossiblyUnusedMethod>
   </file>
   <file src="test/Filter/AbstractFilterTest.php">
     <PossiblyUnusedMethod>
-      <code>filterClassProvider</code>
+      <code><![CDATA[filterClassProvider]]></code>
     </PossiblyUnusedMethod>
   </file>
   <file src="test/Filter/FilterPluginManagerIntegrationTest.php">
     <PossiblyUnusedMethod>
-      <code>filterClassProvider</code>
+      <code><![CDATA[filterClassProvider]]></code>
     </PossiblyUnusedMethod>
   </file>
   <file src="test/Form/FormIntegrationTest.php">
     <PossiblyUnusedMethod>
-      <code>validE164Provider</code>
+      <code><![CDATA[validE164Provider]]></code>
     </PossiblyUnusedMethod>
   </file>
   <file src="test/NumberGeneratorTrait.php">
     <PossiblyUnusedMethod>
-      <code>invalidPhoneNumberProvider</code>
-      <code>invalidPhoneNumberProvider</code>
-      <code>invalidPhoneNumberProvider</code>
-      <code>validPhoneNumberProvider</code>
-      <code>validPhoneNumberProvider</code>
-      <code>validPhoneNumberProvider</code>
+      <code><![CDATA[invalidPhoneNumberProvider]]></code>
+      <code><![CDATA[invalidPhoneNumberProvider]]></code>
+      <code><![CDATA[invalidPhoneNumberProvider]]></code>
+      <code><![CDATA[validPhoneNumberProvider]]></code>
+      <code><![CDATA[validPhoneNumberProvider]]></code>
+      <code><![CDATA[validPhoneNumberProvider]]></code>
     </PossiblyUnusedMethod>
   </file>
   <file src="test/PhoneNumberValueTest.php">
     <PossiblyUnusedMethod>
-      <code>internationalFormatsProvider</code>
+      <code><![CDATA[internationalFormatsProvider]]></code>
     </PossiblyUnusedMethod>
   </file>
   <file src="test/Validator/PhoneNumberTest.php">
+    <DeprecatedMethod>
+      <code><![CDATA[setOptions]]></code>
+      <code><![CDATA[setOptions]]></code>
+    </DeprecatedMethod>
     <PossiblyUnusedMethod>
-      <code>invalidAllowedTypeProvider</code>
-      <code>invalidCountryProvider</code>
-      <code>invalidTypeProvider</code>
+      <code><![CDATA[invalidAllowedTypeProvider]]></code>
+      <code><![CDATA[invalidCountryProvider]]></code>
+      <code><![CDATA[invalidTypeProvider]]></code>
     </PossiblyUnusedMethod>
   </file>
 </files>
