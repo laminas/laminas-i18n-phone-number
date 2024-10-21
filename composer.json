@@ -46,13 +46,13 @@
         "psr/container": "^1.1.2 || ^2"
     },
     "require-dev": {
-        "laminas/laminas-coding-standard": "~2.5.0",
-        "laminas/laminas-config-aggregator": "^1.14",
+        "laminas/laminas-coding-standard": "^3.0.1",
+        "laminas/laminas-config-aggregator": "^1.15",
         "laminas/laminas-servicemanager": "^3.22.1",
         "maglnet/composer-require-checker": "^4.7.1",
-        "phpunit/phpunit": "^10.5.9",
+        "phpunit/phpunit": "^10.5.37",
         "psalm/plugin-phpunit": "^0.19.0",
-        "vimeo/psalm": "^5.20"
+        "vimeo/psalm": "^5.26.1"
     },
     "autoload": {
         "psr-4": {
