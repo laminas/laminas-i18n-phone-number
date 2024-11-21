@@ -34,7 +34,7 @@
         }
     },
     "require": {
-        "php": "~8.1.0 || ~8.2.0 || ~8.3.0",
+        "php": "~8.1.0 || ~8.2.0 || ~8.3.0 || ~8.4.0",
         "ext-intl": "*",
         "giggsey/libphonenumber-for-php": "^8.13.1",
         "laminas/laminas-filter": "^2.27",
@@ -47,10 +47,10 @@
     },
     "require-dev": {
         "laminas/laminas-coding-standard": "^3.0.1",
-        "laminas/laminas-config-aggregator": "^1.15",
-        "laminas/laminas-servicemanager": "^3.22.1",
+        "laminas/laminas-config-aggregator": "^1.17",
+        "laminas/laminas-servicemanager": "^3.23.0",
         "maglnet/composer-require-checker": "^4.7.1",
-        "phpunit/phpunit": "^10.5.37",
+        "phpunit/phpunit": "^10.5.38",
         "psalm/plugin-phpunit": "^0.19.0",
         "vimeo/psalm": "^5.26.1"
     },
