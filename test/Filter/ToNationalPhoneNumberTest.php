@@ -8,7 +8,7 @@ use Laminas\I18n\CountryCode;
 use Laminas\I18n\PhoneNumber\Filter\ToNationalPhoneNumber;
 use PHPUnit\Framework\TestCase;
 
-class ToNationalPhoneNumberTest extends TestCase
+final class ToNationalPhoneNumberTest extends TestCase
 {
     public function testExpectedOutputWhenTheDefaultCountryCodeMatchesTheInput(): void
     {

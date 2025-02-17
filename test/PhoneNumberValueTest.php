@@ -11,7 +11,7 @@ use Laminas\I18n\PhoneNumber\PhoneNumberValue;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
-class PhoneNumberValueTest extends TestCase
+final class PhoneNumberValueTest extends TestCase
 {
     /** @uses \Laminas\I18n\PhoneNumber\Test\NumberGeneratorTrait */
     use NumberGeneratorTrait;

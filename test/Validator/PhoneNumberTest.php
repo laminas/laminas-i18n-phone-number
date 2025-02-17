@@ -17,7 +17,7 @@ use const PHP_INT_MAX;
 use const PHP_INT_MIN;
 
 /** @psalm-suppress InternalClass */
-class PhoneNumberTest extends TestCase
+final class PhoneNumberTest extends TestCase
 {
     use NumberGeneratorTrait;
 
