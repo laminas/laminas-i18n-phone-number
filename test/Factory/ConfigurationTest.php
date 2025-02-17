@@ -11,7 +11,7 @@ use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
 
-class ConfigurationTest extends TestCase
+final class ConfigurationTest extends TestCase
 {
     private TestFactory $factory;
     /** @var MockObject&ContainerInterface */

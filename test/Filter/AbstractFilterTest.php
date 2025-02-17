@@ -14,7 +14,7 @@ use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Stringable;
 
-class AbstractFilterTest extends TestCase
+final class AbstractFilterTest extends TestCase
 {
     /** @return array<string, array{0: class-string<AbstractFilter>}> */
     public static function filterClassProvider(): array

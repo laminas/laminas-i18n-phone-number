@@ -9,7 +9,7 @@ use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
 
-class PhoneNumberFormatFactoryTest extends TestCase
+final class PhoneNumberFormatFactoryTest extends TestCase
 {
     /** @var MockObject&ContainerInterface */
     private ContainerInterface $container;

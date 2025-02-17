@@ -11,7 +11,7 @@ use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
 
-class MultipleFactoryTest extends TestCase
+final class MultipleFactoryTest extends TestCase
 {
     /** @var MockObject&ContainerInterface */
     private ContainerInterface $container;

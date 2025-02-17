@@ -8,7 +8,7 @@ use Laminas\I18n\CountryCode;
 use Laminas\I18n\PhoneNumber\View\Helper\PhoneNumberFormat;
 use PHPUnit\Framework\TestCase;
 
-class PhoneNumberFormatTest extends TestCase
+final class PhoneNumberFormatTest extends TestCase
 {
     public function testInvokeReturnsSelf(): void
     {
