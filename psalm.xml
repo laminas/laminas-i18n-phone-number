@@ -16,6 +16,19 @@
             <directory name="vendor"/>
         </ignoreFiles>
     </projectFiles>
+
+    <issueHandlers>
+        <!--
+         Suppress Missing Override Attribute Issues
+         #[Override] brings little benefit…
+        -->
+        <MissingOverrideAttribute>
+            <errorLevel type="suppress">
+                <directory name="." />
+            </errorLevel>
+        </MissingOverrideAttribute>
+    </issueHandlers>
+
     <plugins>
         <pluginClass class="Psalm\PhpUnitPlugin\Plugin"/>
     </plugins>
