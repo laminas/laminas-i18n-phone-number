@@ -36,7 +36,7 @@
     "require": {
         "php": "~8.1.0 || ~8.2.0 || ~8.3.0 || ~8.4.0",
         "ext-intl": "*",
-        "giggsey/libphonenumber-for-php": "^8.13.1",
+        "giggsey/libphonenumber-for-php": "^9.0.0",
         "laminas/laminas-filter": "^2.27",
         "laminas/laminas-form": "^3.5",
         "laminas/laminas-i18n": "^2.19",

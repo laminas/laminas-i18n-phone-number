@@ -28,14 +28,13 @@ trait NumberGeneratorTrait
     {
         $util  = PhoneNumberUtil::getInstance();
         $short = ShortNumberInfo::getInstance();
-        /** @var list<int> $libTypes */
-        $libTypes = PhoneNumberType::values();
         /** @var list<non-empty-string> $regions */
         $regions = $util->getSupportedRegions();
         foreach ($regions as $country) {
-            /** @var int $type */
             foreach ($util->getSupportedTypesForRegion($country) as $type) {
-                $typeName = $libTypes[$type];
+                /** @psalm-suppress RedundantConditionGivenDocblockType This assertion is useful for inference in an IDE */
+                assert($type instanceof PhoneNumberType);
+                $typeName = $type->name;
                 $number   = $util->getExampleNumberForType($country, $type);
                 if (! $number) {
                     continue; // There might not be an example number for the given type and country
@@ -62,7 +61,7 @@ trait NumberGeneratorTrait
                 }
 
                 $label      = sprintf('Valid %s Example Number: %s (%s)', $country, $national, $typeName);
-                $expectType = PhoneNumberValue::TYPE_MAP[$type];
+                $expectType = PhoneNumberValue::mapType($type);
 
                 yield $label => [
                     $national,
@@ -81,7 +80,7 @@ trait NumberGeneratorTrait
                 'Valid %s Short Number: %s (%s)',
                 $country,
                 $inputNumber,
-                $libTypes[$type]
+                $type->name,
             );
 
             yield $label => [

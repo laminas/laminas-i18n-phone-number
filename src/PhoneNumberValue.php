@@ -14,8 +14,6 @@ use libphonenumber\PhoneNumberType;
 use libphonenumber\PhoneNumberUtil;
 use libphonenumber\ShortNumberInfo;
 
-use function array_key_exists;
-
 final class PhoneNumberValue
 {
     public const TYPE_FIXED         = 1;
@@ -54,25 +52,6 @@ final class PhoneNumberValue
     public const TYPE_RECOMMENDED = self::TYPE_FIXED
                                   | self::TYPE_MOBILE
                                   | self::TYPE_VOIP;
-
-    /** @internal \Laminas\I18n */
-    public const TYPE_MAP = [
-        PhoneNumberType::FIXED_LINE           => self::TYPE_FIXED,
-        PhoneNumberType::MOBILE               => self::TYPE_MOBILE,
-        PhoneNumberType::FIXED_LINE_OR_MOBILE => self::TYPE_FIXED | self::TYPE_MOBILE,
-        PhoneNumberType::TOLL_FREE            => self::TYPE_TOLL_FREE,
-        PhoneNumberType::PREMIUM_RATE         => self::TYPE_PREMIUM_RATE,
-        PhoneNumberType::SHARED_COST          => self::TYPE_SHARED_COST,
-        PhoneNumberType::VOIP                 => self::TYPE_VOIP,
-        PhoneNumberType::PERSONAL_NUMBER      => self::TYPE_PERSONAL,
-        PhoneNumberType::PAGER                => self::TYPE_PAGER,
-        PhoneNumberType::UAN                  => self::TYPE_UAN,
-        PhoneNumberType::UNKNOWN              => self::TYPE_UNKNOWN,
-        PhoneNumberType::EMERGENCY            => self::TYPE_EMERGENCY,
-        PhoneNumberType::VOICEMAIL            => self::TYPE_VOICEMAIL,
-        PhoneNumberType::SHORT_CODE           => self::TYPE_SHORT_CODE,
-        PhoneNumberType::STANDARD_RATE        => self::TYPE_STANDARD_RATE,
-    ];
 
     /**
      * @param non-empty-string $regionCode The ISO 3166 Country Code associated with the number
@@ -176,11 +155,7 @@ final class PhoneNumberValue
             return self::TYPE_SHORT_CODE;
         }
 
-        if (! array_key_exists($type, self::TYPE_MAP)) {
-            return self::TYPE_UNKNOWN;
-        }
-
-        return self::TYPE_MAP[$type];
+        return self::mapType($type);
     }
 
     /**
@@ -201,5 +176,30 @@ final class PhoneNumberValue
             : $givenCode;
 
         return $regionCode !== '' ? $regionCode : null;
+    }
+
+    /**
+     * @psalm-internal Laminas\I18n
+     * @return self::TYPE_*
+     */
+    public static function mapType(PhoneNumberType $type): int
+    {
+        return match ($type) {
+            PhoneNumberType::FIXED_LINE           => self::TYPE_FIXED,
+            PhoneNumberType::MOBILE               => self::TYPE_MOBILE,
+            PhoneNumberType::FIXED_LINE_OR_MOBILE => self::TYPE_FIXED | self::TYPE_MOBILE,
+            PhoneNumberType::TOLL_FREE            => self::TYPE_TOLL_FREE,
+            PhoneNumberType::PREMIUM_RATE         => self::TYPE_PREMIUM_RATE,
+            PhoneNumberType::SHARED_COST          => self::TYPE_SHARED_COST,
+            PhoneNumberType::VOIP                 => self::TYPE_VOIP,
+            PhoneNumberType::PERSONAL_NUMBER      => self::TYPE_PERSONAL,
+            PhoneNumberType::PAGER                => self::TYPE_PAGER,
+            PhoneNumberType::UAN                  => self::TYPE_UAN,
+            PhoneNumberType::UNKNOWN              => self::TYPE_UNKNOWN,
+            PhoneNumberType::EMERGENCY            => self::TYPE_EMERGENCY,
+            PhoneNumberType::VOICEMAIL            => self::TYPE_VOICEMAIL,
+            PhoneNumberType::SHORT_CODE           => self::TYPE_SHORT_CODE,
+            PhoneNumberType::STANDARD_RATE        => self::TYPE_STANDARD_RATE,
+        };
     }
 }
