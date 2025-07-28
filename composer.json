@@ -46,12 +46,12 @@
         "psr/container": "^1.1.2 || ^2"
     },
     "require-dev": {
-        "laminas/laminas-coding-standard": "^3.0.1",
+        "laminas/laminas-coding-standard": "^3.1.0",
         "laminas/laminas-config-aggregator": "^1.18",
         "laminas/laminas-servicemanager": "^3.23.0",
-        "phpunit/phpunit": "^10.5.45",
-        "psalm/plugin-phpunit": "^0.19.3",
-        "vimeo/psalm": "^6.9.3"
+        "phpunit/phpunit": "^10.5.48",
+        "psalm/plugin-phpunit": "^0.19.5",
+        "vimeo/psalm": "^6.13.0"
     },
     "autoload": {
         "psr-4": {

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="5.25.0@01a8eb06b9e9cc6cfb6a320bf9fb14331919d505">
+<files psalm-version="6.13.0@70cdf647255a1362b426bb0f522a85817b8c791c">
   <file src="src/Filter/Factory/ToE164Factory.php">
     <UnusedParam>
       <code><![CDATA[$name]]></code>
@@ -38,50 +38,10 @@
       <code><![CDATA[setCountryContext]]></code>
     </DeprecatedMethod>
   </file>
-  <file src="test/Factory/ConfigurationTest.php">
-    <PossiblyUnusedMethod>
-      <code><![CDATA[nullConfigProvider]]></code>
-    </PossiblyUnusedMethod>
-  </file>
-  <file src="test/Filter/AbstractFilterTest.php">
-    <PossiblyUnusedMethod>
-      <code><![CDATA[filterClassProvider]]></code>
-    </PossiblyUnusedMethod>
-  </file>
-  <file src="test/Filter/FilterPluginManagerIntegrationTest.php">
-    <PossiblyUnusedMethod>
-      <code><![CDATA[filterClassProvider]]></code>
-    </PossiblyUnusedMethod>
-  </file>
-  <file src="test/Form/FormIntegrationTest.php">
-    <PossiblyUnusedMethod>
-      <code><![CDATA[validE164Provider]]></code>
-    </PossiblyUnusedMethod>
-  </file>
-  <file src="test/NumberGeneratorTrait.php">
-    <PossiblyUnusedMethod>
-      <code><![CDATA[invalidPhoneNumberProvider]]></code>
-      <code><![CDATA[invalidPhoneNumberProvider]]></code>
-      <code><![CDATA[invalidPhoneNumberProvider]]></code>
-      <code><![CDATA[validPhoneNumberProvider]]></code>
-      <code><![CDATA[validPhoneNumberProvider]]></code>
-      <code><![CDATA[validPhoneNumberProvider]]></code>
-    </PossiblyUnusedMethod>
-  </file>
-  <file src="test/PhoneNumberValueTest.php">
-    <PossiblyUnusedMethod>
-      <code><![CDATA[internationalFormatsProvider]]></code>
-    </PossiblyUnusedMethod>
-  </file>
   <file src="test/Validator/PhoneNumberTest.php">
     <DeprecatedMethod>
       <code><![CDATA[setOptions]]></code>
       <code><![CDATA[setOptions]]></code>
     </DeprecatedMethod>
-    <PossiblyUnusedMethod>
-      <code><![CDATA[invalidAllowedTypeProvider]]></code>
-      <code><![CDATA[invalidCountryProvider]]></code>
-      <code><![CDATA[invalidTypeProvider]]></code>
-    </PossiblyUnusedMethod>
   </file>
 </files>
