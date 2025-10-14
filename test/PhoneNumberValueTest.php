@@ -13,7 +13,6 @@ use PHPUnit\Framework\TestCase;
 
 final class PhoneNumberValueTest extends TestCase
 {
-    /** @uses \Laminas\I18n\PhoneNumber\Test\NumberGeneratorTrait */
     use NumberGeneratorTrait;
 
     public function testAnExceptionIsThrownForInvalidInput(): void
