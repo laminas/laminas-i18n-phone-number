@@ -16,7 +16,6 @@ use Stringable;
 use const PHP_INT_MAX;
 use const PHP_INT_MIN;
 
-/** @psalm-suppress InternalClass */
 final class PhoneNumberTest extends TestCase
 {
     use NumberGeneratorTrait;
@@ -58,6 +57,8 @@ final class PhoneNumberTest extends TestCase
             ['nuts'],
             ['1'],
             ['en_Muppet'],
+            ['zz'],
+            ['zz_ZZ'],
         ];
     }
 
@@ -148,7 +149,7 @@ final class PhoneNumberTest extends TestCase
         self::assertEquals(
             PhoneNumberValue::TYPE_MOBILE | PhoneNumberValue::TYPE_FIXED,
             $number->type(),
-            'The test number is expected to be possibly a mobile OR a fixed line'
+            'The test number is expected to be possibly a mobile OR a fixed line',
         );
 
         $validator = new PhoneNumber();
@@ -229,6 +230,20 @@ final class PhoneNumberTest extends TestCase
             'country_context' => 'my-field',
         ]);
         self::assertTrue($validator->isValid($input, $context));
+    }
+
+    #[DataProvider('invalidCountryProvider')]
+    public function testInvalidContextValuesDoNotCauseExceptionsDuringFailedValidation(string $contextValue): void
+    {
+        $input     = '01234 567 890';
+        $context   = [
+            'number'   => $input,
+            'my-field' => $contextValue,
+        ];
+        $validator = new PhoneNumber([
+            'country_context' => 'my-field',
+        ]);
+        self::assertFalse($validator->isValid($input, $context));
     }
 
     public function testRuntimeSetOptionsWithEmptyValuesDoNotCauseTypeErrors(): void

@@ -6,6 +6,7 @@ namespace Laminas\I18n\PhoneNumber\Validator;
 
 use Laminas\Form\Annotation\Options;
 use Laminas\I18n\CountryCode;
+use Laminas\I18n\Exception\InvalidArgumentException;
 use Laminas\I18n\PhoneNumber\Exception\InvalidOptionException;
 use Laminas\I18n\PhoneNumber\Exception\InvalidPhoneNumberExceptionInterface;
 use Laminas\I18n\PhoneNumber\Exception\UnrecognizableNumberException;
@@ -19,6 +20,7 @@ use function is_array;
 use function is_int;
 use function is_scalar;
 use function is_string;
+use function preg_match;
 use function sprintf;
 
 /**
@@ -165,16 +167,14 @@ final class PhoneNumber extends AbstractValidator
      */
     public function setCountry(string $countryCodeOrLocale): void
     {
-        $code = CountryCode::tryFromString($countryCodeOrLocale);
-
-        if (! $code) {
+        try {
+            $this->country = $this->resolveCountryCodeFromString($countryCodeOrLocale);
+        } catch (InvalidArgumentException $e) {
             throw new InvalidOptionException(sprintf(
                 'Country codes must be ISO 3166 2-letter codes or Locale strings. Received "%s"',
-                $countryCodeOrLocale
-            ));
+                $countryCodeOrLocale,
+            ), 0, $e);
         }
-
-        $this->country = $code;
     }
 
     /**
@@ -213,6 +213,23 @@ final class PhoneNumber extends AbstractValidator
             return $this->country;
         }
 
-        return CountryCode::tryFromString($code) ?? $this->country;
+        try {
+            return $this->resolveCountryCodeFromString($code);
+        } catch (InvalidArgumentException) {
+            return null;
+        }
+    }
+
+    /**
+     * @param non-empty-string $countryCodeOrLocale
+     * @throws InvalidArgumentException
+     */
+    private function resolveCountryCodeFromString(string $countryCodeOrLocale): CountryCode
+    {
+        if (preg_match('/^[A-Z]{2}$/i', $countryCodeOrLocale)) {
+            return CountryCode::fromString($countryCodeOrLocale);
+        }
+
+        return CountryCode::fromLocaleString($countryCodeOrLocale);
     }
 }

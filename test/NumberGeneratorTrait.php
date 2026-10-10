@@ -16,7 +16,9 @@ use function is_string;
 use function sprintf;
 
 /**
- * @internal \Laminas\I18n\PhoneNumber\Test
+ * @internal
+ *
+ * @psalm-internal Laminas\I18n\PhoneNumber\Test
  */
 trait NumberGeneratorTrait
 {

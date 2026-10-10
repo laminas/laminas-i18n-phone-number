@@ -14,3 +14,5 @@
 /.psr-container.php.stub export-ignore
 /composer.lock export-ignore
 /renovate.json export-ignore
+/benchmarks/ export-ignore
+phpbench.json export-ignore
