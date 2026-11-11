@@ -14,7 +14,7 @@ use Psr\Container\ContainerInterface;
  */
 abstract class ProjectIntegrationTestCase extends TestCase
 {
-    private const CONFIG_PROVIDERS = [
+    private const array CONFIG_PROVIDERS = [
         Laminas\Filter\ConfigProvider::class,
         Laminas\Form\ConfigProvider::class,
         Laminas\I18n\ConfigProvider::class,
