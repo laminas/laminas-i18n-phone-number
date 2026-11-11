@@ -13,8 +13,9 @@ use libphonenumber\PhoneNumberFormat;
 use libphonenumber\PhoneNumberType;
 use libphonenumber\PhoneNumberUtil;
 use libphonenumber\ShortNumberInfo;
+use Stringable;
 
-final readonly class PhoneNumberValue implements \Stringable
+final readonly class PhoneNumberValue implements Stringable
 {
     public const int TYPE_FIXED         = 1;
     public const int TYPE_MOBILE        = 2;
