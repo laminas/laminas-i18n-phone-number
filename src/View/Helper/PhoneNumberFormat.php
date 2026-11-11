@@ -8,10 +8,10 @@ use Laminas\I18n\CountryCode;
 use Laminas\I18n\PhoneNumber\Exception\InvalidPhoneNumberExceptionInterface;
 use Laminas\I18n\PhoneNumber\PhoneNumberValue;
 
-final class PhoneNumberFormat
+final readonly class PhoneNumberFormat
 {
     public function __construct(
-        private readonly CountryCode $defaultCountryCode
+        private CountryCode $defaultCountryCode
     ) {
     }
 

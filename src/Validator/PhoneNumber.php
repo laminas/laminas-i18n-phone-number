@@ -30,10 +30,10 @@ use function sprintf;
  */
 final class PhoneNumber extends AbstractValidator
 {
-    public const INVALID_TYPE = 'invalidInputType';
-    public const NO_MATCH     = 'phoneNumberNoMatch';
-    public const INVALID      = 'invalidPhoneNumber';
-    public const NOT_ALLOWED  = 'typeNotAllowed';
+    public const string INVALID_TYPE = 'invalidInputType';
+    public const string NO_MATCH     = 'phoneNumberNoMatch';
+    public const string INVALID      = 'invalidPhoneNumber';
+    public const string NOT_ALLOWED  = 'typeNotAllowed';
 
     /** @var array<string, non-empty-string> */
     protected $messageTemplates = [

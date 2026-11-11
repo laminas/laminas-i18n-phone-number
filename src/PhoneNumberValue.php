@@ -14,23 +14,23 @@ use libphonenumber\PhoneNumberType;
 use libphonenumber\PhoneNumberUtil;
 use libphonenumber\ShortNumberInfo;
 
-final class PhoneNumberValue
+final readonly class PhoneNumberValue implements \Stringable
 {
-    public const TYPE_FIXED         = 1;
-    public const TYPE_MOBILE        = 2;
-    public const TYPE_TOLL_FREE     = 4;
-    public const TYPE_PREMIUM_RATE  = 8;
-    public const TYPE_SHARED_COST   = 16;
-    public const TYPE_VOIP          = 32;
-    public const TYPE_PERSONAL      = 64;
-    public const TYPE_PAGER         = 128;
-    public const TYPE_UAN           = 256;
-    public const TYPE_EMERGENCY     = 512;
-    public const TYPE_VOICEMAIL     = 1024;
-    public const TYPE_SHORT_CODE    = 2048;
-    public const TYPE_STANDARD_RATE = 4096;
+    public const int TYPE_FIXED         = 1;
+    public const int TYPE_MOBILE        = 2;
+    public const int TYPE_TOLL_FREE     = 4;
+    public const int TYPE_PREMIUM_RATE  = 8;
+    public const int TYPE_SHARED_COST   = 16;
+    public const int TYPE_VOIP          = 32;
+    public const int TYPE_PERSONAL      = 64;
+    public const int TYPE_PAGER         = 128;
+    public const int TYPE_UAN           = 256;
+    public const int TYPE_EMERGENCY     = 512;
+    public const int TYPE_VOICEMAIL     = 1024;
+    public const int TYPE_SHORT_CODE    = 2048;
+    public const int TYPE_STANDARD_RATE = 4096;
 
-    public const TYPE_UNKNOWN = 8192;
+    public const int TYPE_UNKNOWN = 8192;
 
     /** @var int */
     public const TYPE_KNOWN = self::TYPE_FIXED
@@ -58,9 +58,9 @@ final class PhoneNumberValue
      * @param bool $isShortNumber Whether this number is considered a 'short number' or not
      */
     private function __construct(
-        private readonly LibPhoneNumber $number,
-        public readonly string $regionCode,
-        public readonly bool $isShortNumber
+        private LibPhoneNumber $number,
+        public string $regionCode,
+        public bool $isShortNumber
     ) {
     }
 
